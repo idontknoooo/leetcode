@@ -1,1 +1,225 @@
 1.
+35. Search Insert Position
+{
+	a. Binary Search: Need to remember
+	b. Binary search will low(mid), thus use 'left' as return value
+		When a number x is <= nums[right], always right=mid-1, since it doesn't matter whether it is less than or equal, x will always be before 'right'
+		However, when a number x >= nums[left], it matters whether it is > or ==, since if it's > nums[left], x should be place after 'left'; if x == nums[right], x should be place before 'left'.
+}
+38. Count And Say
+{
+	a. A 3 nested loop question, not hard but need thoroughly thinking, better to write down
+	b. convert int to char, int+'0'
+	c. void swap(T a, T b) to swap return & tmp(next)
+	d. Swap is everywhere: if a variable is replaced by another in each iteration, then add a tmp can solve it.
+}
+53. Maximum Array
+{
+	a. If current_sum > 0, then it will be useful for next number
+		when current_sum > 0, if next < 0, then max will be the same, clear current value
+							  if next > 0, then max will be current_sum+next
+		when current_sum < 0, if next < 0, then max will be the same, clear current value
+							  if next > 0, then max will be just 'next', since currrent_sum is useless
+	b. have a variable calculate 'current_non_negative_sum' and a variable store 'max'
+}
+58. Length Of Last Word
+{
+	a. Find condition:
+		Start point: first point from right where != ' ' 
+		End point: after start point, first point where == ' '
+	b. Increment a length variable, not counting the iteration of moving iterator 'i'
+}
+66. Plus One
+{
+	a. Analyze how numbers will change
+		only way to carry is 9+1 (10%10==1)
+		Only time to add element into vector is adding 1 at beginning (vec.insert(vec.begin(),1))
+	b. Handle carry and adding element
+}
+69. Sqrt(x)
+{
+	a. Newton's Iterative Method need to remember
+	int mySqrt(int x) {
+        double ans    = x;
+        double delta  = 0.0001;
+        while (abs(pow(ans, 2) - x) > delta) {
+            ans = (ans + x / ans) / 2;
+        }
+        return ans;
+    }
+	b. x0 = x (initial guess)
+		Xn = X_n-1 - f(X_n-1)/f'(X_n-1)
+		   = X_n-1 - (X_n-1^2-X)/(2*X_n-1)
+		   = X_0 - f(X_0)/f'(X_0) - f(X_1)/f'(X_1) ..... 
+	c. f(a) = a^2 - x
+	   f'(a) = 2a
+}
+67. Add Binary
+{
+	a. Find carry condition
+	b. char calculation: '1' - '0' == 1
+		1 + '0' == ascii(1) == 49
+		char(1) != char(1+'0') == 1 == char(49)
+		int('0') == 48 != 0 = '0'-'0'
+}
+70. Climbing Stairs
+{
+	a. New step can be reach be climb 1 step from previous step (1 way), or 2 steps from pre-previous stop (1 way). 
+	Also, the path to previous and pre-previous are totally different, because they have different numbers of steps.
+	Thus, by adding two previous ways, you got new step.
+}
+83. Remove Duplicates From Sorted List
+{
+	Easy, remember this is a sorted list and only keep the first repeat number and unlink the rest.
+}
+88. Merge Sorted Array
+{
+	a. From the most right (not left)
+	b. Handle nums2 mainly, since nums1 will stay in itself	
+}
+100. Same Tree
+{
+	a. Check whether a pointer is NULL:
+		if(p)
+			cout << "Not NULL" << endl;
+		if(!p)
+			cout << "Is NULL" << endl;
+	b. Process:
+	{
+		Think about process
+		Use character of Tree to 'devide branch' & 'recursion'
+	}	
+}
+101. Sysmmetric Tree
+{
+	a. Think base case and recursion
+	b. Create a helper function
+	c. One trick: Use same root, but flip tree to compare original with fliped
+}
+104. Maximum Depth Of Binary Tree
+{
+	a. DFS method comes to mind, recursion
+	b. BFS is also a solution, iteratively
+}
+107. Binary Tree Level Order Traversal II
+{
+	a. BFS solution, like Question_104. Need a Queue to pop parent layer
+	b. std::reverse(vec.begin(), vec.end()) to reverse
+}
+108. Convert Sorted Array to Binary Search Tree
+{
+	a. BST left_child <= curr <= right_child, thus, root should be in middle of vector (left < middle < right, since vector is sorted) 
+	b. Create new vector using interator:
+		vector<int> leftints(vec.begin(), num.begin()+middle);
+	c. Find all root, then assign it left & right child
+	d. Do this as an iterative process
+}
+110. Balanced Binary Tree
+{
+	a. Need to understand the problem
+		Each node's depth of two subtrees never different by more than 1.
+	b. [1,2,3,4,null,null,9,8,null,null,10] one test case
+	c. Only make sure it is balanced from bottom, it can be balanced up until top
+	d. If only check 2 branch of root, it will miss the difference in each subtree. Check tree in 'b'
+	e. The difference is the criteria for balance 
+}
+111. Minimum Depth of Binary Tree
+{
+	a. Very similar to "Max Depth BT", use recursion and modify a few feature
+	b. [1,2] has min depth 2, not 1; Min depth: root to closest leaf; not root to root.
+}
+112. Path Sum
+{
+	a. Find the pattern: each recursion take (sum-curr->val) as search sum
+	b. handle base case
+	c. Special case, unless root is the only node, root cannot be only value of branch
+		[1,2] find 1, return false, because only branch is 1->2, which sum to 3 not 1
+}
+118. Pascals Triangle
+{
+	a. If size of vector has a pattern, declare its size before add value. 'push_back' take time	 
+	b. Find pattern
+}
+119. Pascal's Triangle II
+{
+	a. NICE to declare size in advance
+	b. Base case:	
+		level0 is [1]
+		level1 is [1,1]
+		level2: [1,2,1]
+	c. Nicer solution is solve from end
+}
+121. Best Time To Buy and Sell Stock
+{
+	a. When there is a example, try to go through it until the end. This helps understand question.
+}
+122. Best Time To Buy and Sell Stock II
+{
+	a. Mathematics: 
+		Suppose a <= b <= c <= d, Max difference is d-a = (b-a)+(c-b)+(d-c)
+		Since for this question, you can't engage in multiple transaction.
+		Thus, the best we can do is: (b-a) + (d-c) <= d-a
+		Thus, as long as there is an increase sequence, (d-a) is the max value
+}
+125. Valid Palindrome
+{
+	#include <cctype>
+	a. isalnum(): check whether ialphanumeric (A-Za-z0-9)
+	b. isalpha(): Check whether letter (A-Za-z)
+	c. isdigit(): check whether digit (0-9)
+	
+	d. Start from 2 sides, faster
+}
+136. Single Number
+{
+	a. A XOR A == 0;
+		0 ^ A == A, where A!=0	
+	b. Use 0^A, iterate entire vector, return A
+	c. accumulate(iter.begin(), iter.end(), init_val, binary_operation)
+		#include <functional> // C++11
+		#include <numeric> // accumulate
+		accumulate(vec.begin(), vec.end(), 0, bit_xor<int>());
+}
+141. Linked List Cycle
+{
+	a. Faster-slower runner method, faster will meet slower eventually
+	b. unordered_set methods 
+}
+155. Min Stack
+{
+	a. Stack is faster than vector
+	b. To make constant min value return, spend time on storing val when do other operations
+}
+157. Read N Characters Given Read4
+{
+	a. For this question, read4() can be only used in one clause for read, otherwise, it will messed up
+	b. when count iteration, use minus or division, two choice pick the best
+		15 4
+		15-4 leave 3, i-=4
+		15/4 mod 3, need variables for dividend & mod
+}
+160. Intersection Of Two Linked Lists
+{
+	a. If no intersection, both node move to null
+	b. To make two lists iterate in same pace, just need to find their length difference
+	c. Then the longer one start from (length - diff) so they will in same pace
+}
+167. Two Sum II - Input Array Is Sorted
+{
+	a. This question assume there must be a solution (two numbers)
+	b. Start from 2 end, 
+		if sum > target, right end move left
+		if sum <= target, left end move right
+		if sum == target, return vector<int> ({left, right})
+}
+168. Excel Sheet Column Title
+{
+	a. Handle a(1) & z(26) special case
+	b. Use n/26 to generate each leter
+	c. Also, see a recursive method
+	d. Number to Letter: (--num%26) + 'A'
+		1 -> A
+		26-> Z
+		[1-26] % 26 = [1-25,0]
+		[0-25] % 26 = [0, 25]
+}
