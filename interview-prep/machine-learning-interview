@@ -1,7 +1,16 @@
 For each of the questions below, answer as if you were in an interview, explaining and justifying your answer with two to three paragraphs as you see fit. For coding answers, explain the relevant choices you made writing the code.
 
-We A/B tested two styles for a sign-up button on our company's product page. 100 visitors viewed page A, out of which 20 clicked on the button; whereas, 70 visitors viewed page B, and only 15 of them clicked on the button. Can you confidently say that page A is a better choice, or page B? Why?
-Can you devise a scheme to group Twitter users by looking only at their tweets? No demographic, geographic or other identifying information is available to you, just the messages they’ve posted, in plain text, and a timestamp for each message.
+1. We A/B tested two styles for a sign-up button on our company's product page. 100 visitors viewed page A, out of which 20 clicked on the button; whereas, 70 visitors viewed page B, and only 15 of them clicked on the button. Can you confidently say that page A is a better choice, or page B? Why?
+
+-   Click Rate for A: 20%
+-   Click Rate for B: 21.43%
+-   From my point of view, as a product page, I would expect more sample size (clicks) in both control group and experiment group. Depending on the daily/weekly visitor population, we are expecting 5%-20% of population as sample size. 
+-   Here we can see that as for percentage, B is better than A by 1.43%. However, B is not dominanting A. I won't say either A or B is better than the other.
+-   To get the best observation, I would suggest to increase sample size and pick the dominant one as our new choice.
+
+
+
+2. Can you devise a scheme to group Twitter users by looking only at their tweets? No demographic, geographic or other identifying information is available to you, just the messages they’ve posted, in plain text, and a timestamp for each message.
 
 In JSON format, they look like this:
 
@@ -10,10 +19,60 @@ In JSON format, they look like this:
  "timestamp": "2016-03-22_11-31-20",
  "tweet": "It's #dinner-time!"
 }
-Assuming you have a stream of these tweets coming in, describe the process of collecting and analyzing them, what transformations/algorithms you would apply, how you would train and test your model, and present the results.
-In a classification setting, given a dataset of labeled examples and a machine learning model you're trying to fit, describe a strategy to detect and prevent overfitting.
-Your team is designing the next generation user experience for your flagship 3D modeling tool. Specifically, you have been tasked with implementing a smart context menu that learns from a modeler’s usage of menu options and shows the ones that would be most beneficial. E.g. I often use Edit > Surface > Smooth Surface, and wish I could just right click and there would be a Smooth Surface option just like Cut, Copy and Paste. Note that not all commands make sense in all contexts, for instance I need to have a surface selected to smooth it. How would you go about designing a learning system/agent to enable this behavior?
-Give an example of a situation where regularization is necessary for learning a good model. How about one where regularization doesn't make sense?
-Your neighborhood grocery store would like to give targeted coupons to its customers, ones that are likely to be useful to them. Given that you can access the purchase history of each customer and catalog of store items, how would you design a system that suggests which coupons they should be given? Can you measure how well the system is performing?
-If you were hired for your machine learning position starting today, how do you see your role evolving over the next year? What are your long-term career goals, and how does this position help you achieve them?
 
+Assuming you have a stream of these tweets coming in, describe the process of collecting and analyzing them, what transformations/algorithms you would apply, how you would train and test your model, and present the results.
+
+-   First, we can run a K-means clustering method, based on these 3 items (convert their attributes to numeric, for 'timestamp' we convert them to numerical and regularize it, for 'tweet' we use length of tweet.). Then we will have different clusters and we one-hot encoding them as our label, so that we can run a Supervised Learning method like Random Forest.
+- 
+-   For supervised Learning, here are some intuition:
+-     From user_id, let's assume that a smaller id number meaning user joined twitter earlier.
+-     From timestamp, we can calculate user's tweets frequency and common tweets time.
+-     From tweet contents, we can extract keywords, tweets length
+-     
+-     By analyze all these information we will have around 5 decision criteria. They are 'joined_date', 'freq', 'tweets_time', 'tweets_length', 'tweets_keywords'. We run a random forest to make these parameters fit in the label we generated from K-means. 
+-   Finally, do cross validation and accuracy testing.
+
+
+
+
+3. In a classification setting, given a dataset of labeled examples and a machine learning model you're trying to fit, describe a strategy to detect and prevent overfitting.
+
+-   Based on the knowledge that when degree of freedom increase, if accuracy for testing set first increase then decrease.
+- 
+-   To detech a overfitted model, I would use a Grid Search method choose the best model with proper degree of freedom. Choose the model where both Testing set and Training set yield a decent accuracy.
+- 
+-   To prevent overfitting, I will apply K-fold Cross Validation method on the model, can train it better by averaging error and parameters. Besides, regularization can also help to prevent overfitting.
+
+
+
+4. Your team is designing the next generation user experience for your flagship 3D modeling tool. Specifically, you have been tasked with implementing a smart context menu that learns from a modeler’s usage of menu options and shows the ones that would be most beneficial. E.g. I often use Edit > Surface > Smooth Surface, and wish I could just right click and there would be a Smooth Surface option just like Cut, Copy and Paste. Note that not all commands make sense in all contexts, for instance I need to have a surface selected to smooth it. How would you go about designing a learning system/agent to enable this behavior?
+
+-   This is basically a 'recent/favorite use' design. Two things we need to do, identify recent/favoritate operation, then add the proper operation into right click menu.
+- 
+-   In identifying process, not only we need to find the 'recent/favortie' operation, but we also need to make sure it 'make sense'. Like the example mentioned in question, some operations need pre-requisite. Assuming the operaton from top menu bar have the mechanism to detect whether a operation filled its pre-requisite, all we need to do for 'right-click-menu' is to map the same behavior of the menu bar at the top menu bar.
+- 
+-   For selecting operations, we here use a Least Recently Used (LRU) design. It basically discards the least recently used items first. If one operation exist in the list, and it appears again, we move it to top and delete the one where it was existed.
+
+
+
+5. Give an example of a situation where regularization is necessary for learning a good model. How about one where regularization doesn't make sense?
+
+-   Say we are trying to make a supervised learning model like linear regression. We are trying to predict whether a person will donate money based on one's age and salary. The range for age & salary are quite different. Age (5-100). Salary (2000-500000). If we don't regularize these data, our model may think salary is a more important parameter. Regularization will give us a better model. Regularization make the model less volitile and less complex.
+- 
+-   For categorical data, regularization doesn't make much sense. Also, if model it too simply, we don't want to regularize it since regularization make model less complex.
+
+
+
+6. Your neighborhood grocery store would like to give targeted coupons to its customers, ones that are likely to be useful to them. Given that you can access the purchase history of each customer and catalog of store items, how would you design a system that suggests which coupons they should be given? Can you measure how well the system is performing?
+
+-   Select a time period (say one year) and make it as 10-12 folds evenly by time. Say now we have 12 folds of customer history, we use 11 months history as training set. For the remaining 1 month, if the customer comes back, we label this costomer as 1, otherwise as 0. Runing 12 supervised learning method (Random Forest). After trained all 12 models, we average it as our best model (or pick the best).
+- 
+-   Apply this model to recent 1-2 months data, to get customer label of returning (1) or not returning (0). Then rank them based on their total purchase history. Pick the first N customer to give them coupon (N is the number of coupon I want to distribute). 
+- 
+-   To measure performance of system, we can test accuracy and F-alpha score when traning model. Also, check whether store's net income or sale is increased.
+
+
+
+7. If you were hired for your machine learning position starting today, how do you see your role evolving over the next year? What are your long-term career goals, and how does this position help you achieve them?
+
+-   Currently, I have general knowledge of Machine Learning and can use some popular ML tools with documents support. In one year, I want to be more familiar with major ML tools and some new tehcniques. Doing more hands on project which will help me dig deeper in Machine Learning or related data science area. Being a ML engineer will give me more opportunity to work on cutting edge ML projects and techknoledges. This is probably the best way to help me improve my skills and let me contribute to machine learning community.
