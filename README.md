@@ -8,4 +8,4 @@ This repository contains solutions when I was practicing algorithm on Leetcode.
 
 ### Projects
 
-## Other
+## Other 

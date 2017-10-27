@@ -1,0 +1,74 @@
+1. We A/B tested two styles for a sign-up button on our company's product page. 100 visitors viewed page A, out of which 20 clicked on the button; whereas, 70 visitors viewed page B, and only 15 of them clicked on the button. Can you confidently say that page A is a better choice, or page B? Why?
+
+-  For this question, we need to have a conclusion based the statistics of A/B testing. To address the conclusion, we want to use hypothesis testing with two-sample T-test. 
+-  1. Our null hypothesis is that: Mu1 = Mu2
+-  2. Alternative hypothesis is: Mu1 != Mu2, where Mu1 is the mean of population A, Mu2 is the mean of population B.
+-  3. Formula to T score (T_calc) = (X1-X2)/(sqrt(SE1+SE2)), where X1/X2, SE1/SE2 are the mean & standard error for A and B scenario.
+-  4. Given confidence level = 0.99, alpha = 0.005 for two tailed distribution. Degree of freedom is 100+70-2 = 168. T score by looking up table will be: T_table ~= 2.61. 
+-  5. If T_calc > T_table, we will reject null hypothesis, otherwise we do not reject null hypothesis.
+-  6. We can also use P-value approach. How it works is basically, the greater P-value is, the less evidence there is against the null hypothesis. In formula, if P-value < alpha, reject null hypothesis, otherwise do not reject null hypothesis.
+-  7. If we do not reject null hypothesis, then we believe there is no significant difference between A & B.
+-  8. If we reject null hypothesis, then we believe there will be one that actually better than the other between A & B. In this case, I would suggest to pick the one has better click through rate as our new model.
+-  In our case, sample mean of A and B are pretty similar and their standard error are big, thus T_calc is definitely less than T_table. Thus, A is not a better choice than B. They are probably similar.
+
+
+
+2. Can you devise a scheme to group Twitter users by looking only at their tweets? No demographic, geographic or other identifying information is available to you, just the messages they’ve posted, in plain text, and a timestamp for each message.
+
+In JSON format, they look like this:
+{
+ "user_id": 3,
+ "timestamp": "2016-03-22_11-31-20",
+ "tweet": "It's #dinner-time!"
+}
+Assuming you have a stream of these tweets coming in, describe the process of collecting and analyzing them, what transformations/algorithms you would apply, how you would train and test your model, and present the results.
+
+-  Since we don't have the knowledge of what 'group' or 'property' does one specific twitter user have, so this will be an Unsupervised Learning approach. 
+-  For example, we want to know how likely twitter users will go to NBA game. We can use some clustering techniques and Natrual Language Process tools to reach this goal. 
+-  To make our goal clear, we want to separate all twitter users into 2 groups (likely to go NBA or Not Likely to go). There are 3 arguments from one JSON tag. I would believe 'timestamp' and 'tweet' are way more important than 'user_id'. By tokenize 'tweet' using nltk library, we can apply Principal Component Analysis on 'user_id' and tokenized 'tweet' to find out PCA. Then, apply K-means or Gaussian Mixture Model based first 2 components. 
+-  After clustering, we will have an idea whether a twtter user would like to go NBA game or not. This will help ticket website like TicketMaster to advertise their service.
+-  When I had my Nanodegree at Udacity, I did a similar project using Unsupervised Learning technique. I applied K-Means and PCA on separate Grocery stores so that the delivery company will have a better idea of understand their customers' behavior.
+
+
+
+3. In a classification setting, given a dataset of labeled examples and a machine learning model you're trying to fit, describe a strategy to detect and prevent overfitting.
+
+-  Based on the knowledge that when degree of freedom increase, if accuracy for testing set first increase then decrease.
+-  To detect a overfitted model, I would use a Grid Search method choose the best model with proper degree of freedom. Choose the model where both Testing set and Training set yield a decent accuracy. If the testing scores start to decrease and the training score is increasing, this can be considered as a hint that the model has started to overfit.
+-  To prevent overfitting, I will apply K-fold Cross Validation method on the model, can train it better by averaging error and parameters. Besides, regularization can also help to prevent overfitting. For techniques like Gradient Descent, we can use early stopping (a form of regularization) to avoid overfitting.
+-  Another way to prevent overfitting is to reduce dimensionality. We can get rid of non-important feature and only keep major components.
+
+
+
+4. Your team is designing the next generation user experience for your flagship 3D modeling tool. Specifically, you have been tasked with implementing a smart context menu that learns from a modeler’s usage of menu options and shows the ones that would be most beneficial. E.g. I often use Edit > Surface > Smooth Surface, and wish I could just right click and there would be a Smooth Surface option just like Cut, Copy and Paste. Note that not all commands make sense in all contexts, for instance I need to have a surface selected to smooth it. How would you go about designing a learning system/agent to enable this behavior?
+
+-  This is basically a 'recent/favorite use' design. Two things we need to do, identify recent/favoritate operation, then add the proper operation into right click menu.
+-  In identifying process, not only we need to find the 'recent/favortie' operation, but we also need to make sure it 'make sense'. Like the example mentioned in question, some operations need pre-requisite. Assuming the operaton from top menu bar have the mechanism to detect whether a operation filled its pre-requisite, all we need to do for 'right-click-menu' is to map the same behavior of the menu bar at the top menu bar. Note that we only at the 'leaf' operation(operation which has no sub-operations) into our 'right-click' list.
+-  For selecting operations, we here use a Least Recently Used (LRU) design. It basically discards the least recently used items first. If one operation exist in the list, and it appears again, we move it to top and delete the one where it was existed. 
+-  We can also add in a Reinforcement Learning mechanism (Q-learning method), which gives positive rewards when user click one tab in 'right click menu' and give large negative reward if some options haven't been clicked by 'right click menu' for a long time. This will also give us a better design.
+-  More specifically, there will be 3 state for each operation. 
+    a. Exists in 'right-click' but is selected from menu tab.
+    b. Exists in 'right-click' and is selected from 'right-click'.
+    c. Not exists in 'right-click' and selected from menu tab.
+   So, we will have these states different rewards. a(-5),b(1),c(0). From here, we apply Q-learning to train our model to select the best display result. My guess is for some easy to reach tab, it will probablity not be showed in 'right-click', but for some hard to find & common use operations, it will be stored in 'right-click'.
+
+
+
+5. Give an example of a situation where regularization is necessary for learning a good model. How about one where regularization doesn't make sense?
+
+-  When there are a lots of feature in a fitting model, applying regularization can help to avoid overfitting. While, if there are not to much features, there is no point to use regularization at all. For example, there is no point to regularize the dataset if we can tell from x,y axis plot, it is clearly a y = ax+b distribution.
+
+
+
+6. Your neighborhood grocery store would like to give targeted coupons to its customers, ones that are likely to be useful to them. Given that you can access the purchase history of each customer and catalog of store items, how would you design a system that suggests which coupons they should be given? Can you measure how well the system is performing?
+
+-  We can use K-Mean cluster based on customers purchase history (the item they purchase, the amout of money the spend) to clustering returning customer who is returning or not. By doing this we will have a clear separation between each customer group, and then we can pick the group which has the most purchse capability and send them coupon. During this process, we first clean and analyze data. Then we generalize data, make sure they are in proper form (log normal distribution). Run a PCA to find out the major components of data. Then, build the K-means or Gaussian Mixture Model to cluster customers.
+-  Another thing we can do is to separate customer based on their preference, using collaborative filtering and attribute-based recommendation techniques to send coupon based on their preference or recommend them some other's purchase if they have similar likes. To get their preference, we need to find out the components which can separate costomers. 
+-  To measure whether our system works, we can follow up on coupons. We assign ID for each coupon and see whether they are used before expiration. We should also associate coupon ID with their assignment method (whether its by simple clustering or collaborative filter or attributed based method), so that in future, we can focus more on the most effective method. The most important thing is to measure the revenue, since the goal for company is always make more money with proper style.
+
+
+
+7. If you were hired for your machine learning position starting today, how do you see your role evolving over the next year? What are your long-term career goals, and how does this position help you achieve them?
+
+-  Currently, I have general knowledge of Machine Learning and can use some popular ML tools with documents support. In one year, I want to be more familiar with major ML tools and some new tehcniques. Doing more hands on project which will help me dig deeper in Machine Learning or related data science area. Being a ML engineer will give me more opportunity to work on cutting edge ML projects and techknoledges. This is probably the best way to help me improve my skills and let me contribute to machine learning community. Based on what I learned from job description, working with Darwin will give me more exposure on Machine Learning area, specifically in machine vision and recommendation system. I had previous experience in these area and I also want to address more in these field in my work projects. If I can join Darwin, it will be a virtuous cycle. Not only my skill fits the company really well, but also by improving myself during work, I can contribute more to the company.
+-  In long term, I want to build up both my skill set and leadship. Machine learning is getting more and more popular, personally, I believe it will keep its heat for a few year. It will rise with Data Science and Artificial Intelligency. Thus, it is necessary to have a strong technical team to build more and more robust and efficient model for Darwin. Machine Learning can really benefit people from all aspect, during my spare time, I built a music recommdation system based on Spotify API. This system help me and my friends had a better experience when we listening to the music. As you can see, as I benefitor myself, I believe Machine Learning can help Darwin broad its business. Currently, maybe Darwin is still focus on recommendation system, but in the future, you might want to add some new features like Artificial Intelligence with Robotics. As a Machine Learning Engineer myself, I would like to be strong in technical area and build up my team to make Darwin have more influence in this industry. To be more specific, I want to lead my team to build up a recommendation library/architecture which can help our company or other developer build their model more efficient and more robust. 
