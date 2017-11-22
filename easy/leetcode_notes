@@ -1,4 +1,38 @@
-1. 
+// General
+// {
+// 	1. Code to get faster running time in Leetcode
+// 	{
+		// x is input value
+		static int x=[](){
+			// toggle off cout & cin, instead, use printf & scanf
+		    std::ios::sync_with_stdio(false);
+		    // untie cin & cout
+		    cin.tie(NULL);
+		    return 0;
+		}();
+// 	}
+// }
+// Questions
+// 1. Two Sum
+// {
+		#include <unordered_map> // include <unordered_map>
+		unordered_map<int, int> map // hashmap in C++
+		map.find(key) // map.find() find key, not value
+		unordered_map<int, int>::iterator p = map.begin(); // iterator
+		p->second; // value for key
+		p->first; // key
+		map[key] = value; // store pair in map
+// }
+// 7. Reverse Integer
+// {
+	// Use nemeric method instead of string method
+	INT_MIN //: Minimum value for an object of type int (-2^15+1 or less)
+	INT_MAX //: Maxmium value for an object of type int (2^15-1 or more)
+	to_string(int) // Convert int to string
+	stoi(string) // covert string to int
+	stol(string) // convert string to long
+	stoll(string) // convert string to long long
+// }
 35. Search Insert Position
 {
 	a. Binary Search: Need to remember
