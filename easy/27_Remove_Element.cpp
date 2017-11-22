@@ -1,14 +1,14 @@
 class Solution {
 public:
+    // Double pointer
     int removeElement(vector<int>& nums, int val) {
-        int count = 0;
-        for(int i = 0; i < nums.size(); ++i)
-        {
-            if(nums[i] == val)
-                count++;
-            else
-                nums[i-count] = nums[i];
+        if(!nums.size()) return 0;
+        int a = 0; // first pointer, i is second pointer
+        for(int i = 0; i < nums.size(); ++i){
+            if(nums[i]!=val){
+                nums[a++] = nums[i];
+            }
         }
-        return nums.size()-count;
+        return a;
     }
 };

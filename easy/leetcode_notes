@@ -9,7 +9,7 @@
 		    // untie cin & cout
 		    cin.tie(NULL);
 		    return 0;
-		}();
+		}(); // add () because it create lambda function and CALLED it.
 // 	}
 // }
 // Questions
@@ -32,6 +32,96 @@
 	stoi(string) // covert string to int
 	stol(string) // convert string to long
 	stoll(string) // convert string to long long
+// }
+// 13. Roman to Integer
+// {
+		// 1. https://en.wikipedia.org/wiki/Roman_numerals
+		// 2. Think in both string and integer ways
+		// 3. 重复数次：一个罗马数字重复几次，就表示这个数的几倍。
+		// 4. 右加左减：
+		// 		在较大的罗马数字的右边记上较小的罗马数字，表示大数字加小数字。
+		// 		在较大的罗马数字的左边记上较小的罗马数字，表示大数字减小数字。
+		// 5. 同一数码最多只能连续出现三次，如40不可表示为XXXX，而要表示为XL。
+		// 6. Declare Map with initialization
+        unordered_map<char, int> mp {
+	 	{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}
+		};
+		// 7. Last element of string s
+		s.back(); // C++11
+		s.back() = '!'; // Since back() return reference, you can assign new value to it
+		s.front(); // first element of string, C++11
+		// 8. Access String element
+		s[i]; // pass reference
+		s.at(i); // same as above
+// }
+// 14. Longest Common Prefix
+// {
+	// 1. Understand what is common prefix: same starting chars among different strings	
+	// 2. Bucket Principal: The shortest decides everything. 
+	// 		In this case, common prefix between first 2 string is crucial, 
+	//		since that is the first common prefix
+	// 3.  Simulate the process by using trivial example with pen
+// }
+// 20. Valid Parentheses
+// {
+	// 1. Stack methods:
+		stack<int> s;
+		s.size();
+		s.top();
+		s.pop(); // does NOT return anything, so usually combine with top() when use
+		s.push();
+		s.empty();
+	// 2. String functions
+		string s = "hello";
+		string s1 = "world";
+		s.compare(s1); // return 0 when two strings are same, <0 s is shorter or lower than s1
+		s.find('c'); // search a char in string and return iterator, string::npos is not found
+		s.find('string'); // search a string in string and return iterator
+		std::size_t found = s.find('c');
+		if(found!=std::string::npos)
+			cout << "found at " << found << endl;
+		std::size_t // Unsigned integral type. Alias of one of the fundamental unsigned integer types.
+		// position does not match ANY char in string
+		s.find_first_not_of(' '); // Searches the string for the first character that does not match any of the characters specified in its arguments.
+		// ANY of char in search string
+		s.find_first_of(''); // Searches the string for the first character that matches any of the characters specified in its arguments.
+		s.find_last_not_of('dc'); // last one
+		s.find_last_of('sc'); // last one
+		s.insert(s.begin(),'something'); // insert string(char) or char at position(or iterator)
+		s.insert(10, 3, '-'); // insert 3 '-' at position 10
+	// 3. Ascii to compare neighbours
+		if('{'+1 != (int)c) // check whether c == '}', which is match to '{'
+// }
+// 21. Merge Two Sorted Lists
+// {
+	// 1. Note Lists are SORTED!
+	// 2. Use 2 pointers on lists and move them accordingly
+	// 3. First Node can be discard, since it does NOT have a value
+	// 4. Empty list doesn't matter, since the end of list is NULL
+	// 5. Declare listnode
+			// Definition for singly-linked list.
+			struct ListNode {
+			    int val;
+			    ListNode *next;
+			    ListNode(int x) : val(x), next(NULL) {}
+			};
+			ListNode* node = new ListNode(INT_MIN);
+// }
+// 26. Remove Duplicates From Sorted Array
+// {
+	// 1. Update vector using double pointer
+	// 2. std functions:
+	// get unique value placed from beginning of vector
+		vector<int>::iterator it = std::unique(vec.begin(), vec.end()); 
+		vec.erase(it, vec.end());	// erase from iterator a to iterator b
+// }
+// 27. Remove Element
+// {
+	// 1. Double pointer	
+// }
+// 28. Implement strStr()
+// {
+	// 1. Check the match size and see whether it is same as 'needle', O(n^2)
 // }
 35. Search Insert Position
 {

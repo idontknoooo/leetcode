@@ -1,6 +1,7 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
+// Add From back
 class Solution {
 public:
     int romanToInt(string s) {
@@ -17,6 +18,30 @@ public:
             sum += mp[s[i]] >= mp[s[i + 1]] ? mp[s[i]] : -mp[s[i]];
         }
         return sum;
+    }
+};
+
+// Add from front, initialize as last element but it still add from front 
+class Solution {
+public:
+    int romanToInt(string s) {
+        map<char, int> match;
+        match['I']=1;
+        match['V']=5;
+        match['X']=10;
+        match['L']=50;
+        match['C']=100;
+        match['D']=500;
+        match['M']=1000;
+        int result=match[s[s.size()-1]];
+        for(int i=0;i<s.size()-1;i++){
+            if(match[s[i]] < match[s[i+1]]){
+                result -= match[s[i]];
+            } else{
+                result += match[s[i]];
+            }
+        }
+        return result;
     }
 };
 int main()
