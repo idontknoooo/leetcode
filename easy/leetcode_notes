@@ -29,8 +29,8 @@
 			cout << y << endl;
 			return 0;	
 //	 	}
-		3. Moving Average
-		{
+		// 3. Moving Average
+		// {
 			vector<int> vec = {32,41,41,35,43,53,61,35,61};
 			int n_day = 3;
 			vector<int> ma;
@@ -47,7 +47,7 @@
 				last = vec[i+3];
 				pre = cur;
 			}
-		}
+		// }
 // }
 // Questions
 // 1. Two Sum
@@ -160,26 +160,31 @@
 // {
 	// 1. Check the match size and see whether it is same as 'needle', O(n^2)
 // }
-35. Search Insert Position
-{
-	a. Binary Search: Need to remember
-	b. Binary search will low(mid), thus use 'left' as return value
-		When a number x is <= nums[right], always right=mid-1, since it doesn't matter whether it is less than or equal, x will always be before 'right'
-		However, when a number x >= nums[left], it matters whether it is > or ==, since if it's > nums[left], x should be place after 'left'; if x == nums[right], x should be place before 'left'.
-}
-38. Count And Say
-{
-	a. A 3 nested loop question, not hard but need thoroughly thinking, better to write down
-	b. convert int to char, int+'0'
-	c. void swap(T a, T b) to swap return & tmp(next)
-	d. Swap is everywhere: if a variable is replaced by another in each iteration, then add a tmp can solve it.
-}
+// 35. Search Insert Position
+// { 
+	// a. Binary Search: Need to remember: https://en.wikipedia.org/wiki/Binary_search_algorithm
+	// b. Binary search will low(mid), thus use 'left' as return value
+	// 		When a number x is <= nums[right], always right=mid-1, since it doesn't matter whether it is less than or equal, x will always be before 'right'
+	// 		However, when a number x >= nums[left], it matters whether it is > or ==, since if it's > nums[left], x should be place after 'left'; if x == nums[right], x should be place before 'left'.
+// }
+// 38. Count And Say
+// {
+	// a. A 3 nested loop question, not hard but need thoroughly thinking, better to write down
+	// b. convert int to char, int+'0'
+		int num = 9;
+		char c = num+'0'; // use ascii;
+		int num1 = 99;
+		string s = to_string(num1); // use to_string
+	// c. void swap(T a, T b) to swap return & tmp(next)
+	// d. Swap is everywhere: if a variable is replaced by another in each iteration, then add a tmp can solve it.
+	// e. the last char of string is '\0'. Meaning the end of string.
+// }
 53. Maximum Array
 {
 	a. If current_sum > 0, then it will be useful for next number
-		when current_sum > 0, if next < 0, then max will be the same, clear current value
-							  if next > 0, then max will be current_sum+next
-		when current_sum < 0, if next < 0, then max will be the same, clear current value
+		when current_sum > 0, if next < 0, then max will be the same, current_sum += 'next'
+							  if next > 0, then max will be current_sum + 'next'
+		when current_sum < 0, if next < 0, then max will be the same, clear current_sum value to 0
 							  if next > 0, then max will be just 'next', since currrent_sum is useless
 	b. have a variable calculate 'current_non_negative_sum' and a variable store 'max'
 }

@@ -11,26 +11,33 @@ static int some=[](){
 }();
 vector<int> hh(vector<int> vec, int n);
 int reverse(int x);
+string countAndSay(int n);
 int main(){
 	
-	vector<int> vec = {1,2,2,3,3,3,4,5,6};
-	vector<int> tmp = hh(vec,0);
-	for(int i = 0; i < tmp.size(); ++i){
-		cout << tmp[i] << endl;
-	}
+	// vector<int> vec = {1,2,2,3,3,3,4,5,6};
+	// vector<int> tmp = hh(vec,0);
+	// for(int i = 0; i < tmp.size(); ++i){
+	// 	cout << tmp[i] << endl;
+	// }
 
-	vector<int> a = {1,2,3,4,5};
-	int y = 0;
-	int x = 2;
-	for(int i = 0; i < 5; ++i){
-		y += a[i]*pow(x,i);
-	}
-	cout << y << endl;
-	y = a[4]*x+a[3];
-	for(int i = 3; i > 0; --i){
-		y = y*x+a[i-1];
-	}
-	cout << y << endl;
+	// vector<int> a = {1,2,3,4,5};
+	// int y = 0;
+	// int x = 2;
+	// for(int i = 0; i < 5; ++i){
+	// 	y += a[i]*pow(x,i);
+	// }
+	// cout << y << endl;
+	// y = a[4]*x+a[3];
+	// for(int i = 3; i > 0; --i){
+	// 	y = y*x+a[i-1];
+	// }
+	// cout << y << endl;
+	// for(int i = 1; i < 6; ++i)
+	// 	cout << countAndSay(i) << endl;
+	char a = 9+'0';
+	cout << a << endl;
+	string b = to_string(88);
+	cout << b << endl;
 	return 0;
 	 
 }
@@ -53,4 +60,29 @@ vector<int> hh(vector<int> vec, int n){
 	}
 	return vector<int> (vec.begin(), vec.begin()+a);
 
+}
+string countAndSay(int n){
+
+	string s = "1";
+	string tmp = "";
+	int i = 1;
+	while(i < n){
+		int count = 1;
+		int j = 0;
+		while(j < s.length()){
+			if(s[j]!=s[j+1]){
+				tmp += count + '0';
+				tmp += s[j];
+				count = 1;
+			}
+			else{
+				count += 1;
+			}
+			++j;
+		}
+		s = tmp;
+		tmp = "";
+		++i;
+	}
+	return s;
 }
