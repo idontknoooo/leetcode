@@ -20,3 +20,19 @@ public:
         return head;
     }
 };
+
+
+// This one faster, since it check all dupicates at one time
+ListNode* deleteDuplicates(ListNode* head) {
+    if(!head)return head;
+    ListNode*h=head;
+    while(h)
+    {
+        while(h->next&&h->val==h->next->val)
+        {
+            h->next=h->next->next;
+        }
+        h=h->next;
+    }
+    return head;
+}

@@ -12,6 +12,8 @@ static int some=[](){
 vector<int> hh(vector<int> vec, int n);
 int reverse(int x);
 string countAndSay(int n);
+int fibonacci(int a);
+int fibonacci1(int a);
 int main(){
 	
 	// vector<int> vec = {1,2,2,3,3,3,4,5,6};
@@ -34,10 +36,17 @@ int main(){
 	// cout << y << endl;
 	// for(int i = 1; i < 6; ++i)
 	// 	cout << countAndSay(i) << endl;
-	char a = 9+'0';
-	cout << a << endl;
-	string b = to_string(88);
-	cout << b << endl;
+	// char a = 9+'0';
+	// cout << a << endl;
+	// string b = to_string(88);
+	// cout << b << endl;
+	for(int i = 1; i < 10; ++i){
+		cout << fibonacci(i) << " ";
+	}
+	cout << endl;
+	for(int i = 1; i < 10; ++i){
+		cout << fibonacci1(i) << " ";
+	}
 	return 0;
 	 
 }
@@ -85,4 +94,23 @@ string countAndSay(int n){
 		++i;
 	}
 	return s;
+}
+int fibonacci(int n){
+	int a = 0, b = 1;
+	int re = 0;
+	if(n==1) return a;
+	if(n==2) return b;
+	while(n-- > 2){
+		re = a + b;
+		a = b;
+		b = re;
+	}	
+	return re;
+}
+int fibonacci1(int n){
+	int a = 0, b = 1;
+	if(n<=1) return 0;
+	else if(n==2) return 1;
+	else
+		return fibonacci(n-1) + fibonacci(n-2);
 }

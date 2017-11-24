@@ -20,3 +20,21 @@ public:
         return s;
     }
 };
+string addBinary(string a, string b){
+
+    string s = "";
+    bool carry = 0;
+    int pa = a.length()-1, pb = b.length()-1;
+    while(pa >= 0 || pb >= 0){
+        int tmp = 0;
+        int va = pa>=0? (a[pa--]-'0') : 0;
+        int vb = pb>=0? (b[pb--]-'0') : 0;
+        tmp = va+vb;
+
+        if(carry) tmp++;
+        carry = tmp/2;
+        s = to_string(tmp%2) + s;
+    }
+    if(carry) s = '1'+s;
+    return s;
+}

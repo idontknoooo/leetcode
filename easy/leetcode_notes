@@ -179,70 +179,124 @@
 	// d. Swap is everywhere: if a variable is replaced by another in each iteration, then add a tmp can solve it.
 	// e. the last char of string is '\0'. Meaning the end of string.
 // }
-53. Maximum Array
-{
-	a. If current_sum > 0, then it will be useful for next number
-		when current_sum > 0, if next < 0, then max will be the same, current_sum += 'next'
-							  if next > 0, then max will be current_sum + 'next'
-		when current_sum < 0, if next < 0, then max will be the same, clear current_sum value to 0
-							  if next > 0, then max will be just 'next', since currrent_sum is useless
-	b. have a variable calculate 'current_non_negative_sum' and a variable store 'max'
-}
-58. Length Of Last Word
-{
-	a. Find condition:
-		Start point: first point from right where != ' ' 
-		End point: after start point, first point where == ' '
-	b. Increment a length variable, not counting the iteration of moving iterator 'i'
-}
-66. Plus One
-{
-	a. Analyze how numbers will change
-		only way to carry is 9+1 (10%10==1)
-		Only time to add element into vector is adding 1 at beginning (vec.insert(vec.begin(),1))
-	b. Handle carry and adding element
-}
-69. Sqrt(x)
-{
-	a. Newton's Iterative Method need to remember
+// 53. Maximum Array
+// {
+	// a. If current_sum > 0, then it will be useful for next number
+	// 	when current_sum > 0, if next < 0, then max will be the same, current_sum += 'next'
+	// 						  if next > 0, then max will be current_sum + 'next'
+	// 	when current_sum < 0, if next < 0, then max will be the same, clear current_sum value to 0
+	// 						  if next > 0, then max will be just 'next', since currrent_sum is useless
+	// b. have a variable calculate 'current_non_negative_sum' and a variable store 'max'
+// }
+// 58. Length Of Last Word
+// {
+	// a. Find condition:
+	// 	Start point: first point from right where != ' ' 
+	// 	End point: after start point, first point where == ' '
+	// b. Increment a length variable, not counting the iteration of moving iterator 'i'
+// }
+// 66. Plus One
+// {
+	// a. Analyze how numbers will change
+		// only way to carry is 9+1 (10%10==1)
+		// Only time to add element into vector is adding 1 at beginning (vec.insert(vec.begin(),1))
+		vec.insert(vec.begin(), 1);
+	// b. Handle carry and adding element
+// }
+// 67. Add Binary
+// {
+		// 1. To simplify the if...else statement, think about the output of condition, e.g.
+		carry =  (tmp/2>0)? 1 : 0;
+		// Can be replaced by
+		carry = tmp/2;
+		// 2. Everytime when there is arithmatics on string or vectors, think about division(/) and mod(%),
+			// because they tell you when to carry(/) and what to save at this digit(%);
+		// 3. To save lines, when pointer is not being used in further but need Increment,
+			// do it by post increment when using it, e.g.
+		tmp = char(a[pb]-'0');
+		pb--;
+		// Instead above, use this:
+		tmp = char(a[pb--]-'0');
+		// 4. When doing check for multiple part at the same time, consider to if check for each part separately
+		if(pa >= 0 && pb >= 0) ...
+		else if(pa >= 0)
+		else if(pb >= 0)
+		// instead above do this:
+		if(pa>=0)  
+		if(pb>=0)	
+		// Doing these, save lots of lines to if statement content
+	// a. Find carry condition
+	// b. char calculation: 
+		'1' - '0' == 1
+		1 + '0' == ascii(1) == 49
+		char(1) != char(1+'0') == 1 == char(49)
+		int('0') == 48 != 0 = '0'-'0'
+// }
+// 69. Sqrt(x)
+// {
+	// a. Newton's Iterative Method need to remember 近似求解方程的方法
+	// Xn = X_n-1 - f(X_n-1)/f'(X_n-1). X_n will always be close to real solution than X_n-1
+	// ans = ans - (ans^2-x)/(2*ans);
 	int mySqrt(int x) {
         double ans    = x;
         double delta  = 0.0001;
         while (abs(pow(ans, 2) - x) > delta) {
+		// ans = ans - (ans^2-x)/(2*ans);
             ans = (ans + x / ans) / 2;
         }
         return ans;
     }
-	b. x0 = x (initial guess)
-		Xn = X_n-1 - f(X_n-1)/f'(X_n-1)
-		   = X_n-1 - (X_n-1^2-X)/(2*X_n-1)
-		   = X_0 - f(X_0)/f'(X_0) - f(X_1)/f'(X_1) ..... 
-	c. f(a) = a^2 - x
-	   f'(a) = 2a
-}
-67. Add Binary
-{
-	a. Find carry condition
-	b. char calculation: '1' - '0' == 1
-		1 + '0' == ascii(1) == 49
-		char(1) != char(1+'0') == 1 == char(49)
-		int('0') == 48 != 0 = '0'-'0'
-}
-70. Climbing Stairs
-{
-	a. New step can be reach be climb 1 step from previous step (1 way), or 2 steps from pre-previous stop (1 way). 
-	Also, the path to previous and pre-previous are totally different, because they have different numbers of steps.
-	Thus, by adding two previous ways, you got new step.
-}
-83. Remove Duplicates From Sorted List
-{
-	Easy, remember this is a sorted list and only keep the first repeat number and unlink the rest.
-}
-88. Merge Sorted Array
-{
-	a. From the most right (not left)
-	b. Handle nums2 mainly, since nums1 will stay in itself	
-}
+	// b. x0 = x (initial guess)
+	// 	Xn = X_n-1 - f(X_n-1)/f'(X_n-1)
+	// 	   = X_n-1 - (X_n-1^2-X)/(2*X_n-1)
+	// 	   = X_0 - f(X_0)/f'(X_0) - f(X_1)/f'(X_1) ..... 
+	// c. f(a) = a^2 - x
+	//    f'(a) = 2a
+// }
+
+// 70. Climbing Stairs
+// {
+	// a. New step can be reach be climb 1 step from previous step (1 way), or 2 steps from pre-previous stop (1 way). 
+	// Also, the path to previous and pre-previous are totally different, because they have different numbers of steps.
+	// Thus, by adding two previous ways, you got new step.
+	// b. Same as fibonacci series
+	// Iteratively
+	int fibonacci(int n){
+		int a = 0, b = 1;
+		int re = 0;
+		if(n<=1) return a;
+		if(n==2) return b;
+		while(n-- > 2){
+			re = a + b;
+			a = b;
+			b = re;
+		}	
+		return re;
+	}
+	// Recursive
+	int fibonacci1(int n){
+		int a = 0, b = 1;
+		if(n<=1) return 0;
+		else if(n==2) return 1;
+		else
+			return fibonacci(n-1) + fibonacci(n-2);
+	}
+// }
+// 83. Remove Duplicates From Sorted List
+// {
+	// Easy, remember this is a sorted list and only keep the first repeat number and unlink the rest.
+	// 1. Single pointer
+	// 2. Always check last element when it can be NULL 
+	// 3. Check either one-by-one or all in once
+	// all-in-once is faster
+// }
+// 88. Merge Sorted Array
+// {
+	// Since they are array, think how fixed size container works
+	// They always initialize enought space before use
+	// a. From the most right (not left)
+	// b. Handle nums2 mainly, since nums1 will stay in itself	
+// }
 100. Same Tree
 {
 	a. Check whether a pointer is NULL:
