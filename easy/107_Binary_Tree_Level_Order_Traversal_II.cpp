@@ -46,3 +46,25 @@ public:
         return re;
     }
 };
+
+ // 递归写法
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+        vector<vector<int>> res;
+        vector<vector<int>> reverse_res;
+        levelorder(root, 0, res);
+        
+        vector<vector<int>>::reverse_iterator it;
+        for (it=res.rbegin(); it!=res.rend(); it++){
+            reverse_res.push_back(*it);
+        }
+        return reverse_res;
+    }
+    
+    void levelorder(TreeNode *root, int level, vector<vector<int>> &res){
+        if(!root) return;
+        if(res.size() == level) res.push_back({});
+        res[level].push_back(root->val);
+        if(root->left) levelorder(root->left, level+1, res);
+        if(root->right) levelorder(root->right, level+1, res);
+    }
+    

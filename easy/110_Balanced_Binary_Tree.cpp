@@ -22,3 +22,30 @@ public:
 	}
     
 };
+
+// 0ms solution
+class Solution {
+public:
+    
+    int treeHight(TreeNode* root){
+        if(root==NULL)
+            return 0;
+        int leftlengh=treeHight(root->left);
+        if(leftlengh==-1)
+            return -1;
+        int rightlengh=treeHight(root->right);
+        if(rightlengh==-1)
+            return -1;
+        if(abs(leftlengh - rightlengh)>1)
+            return -1;
+        return max(leftlengh,rightlengh)+1;
+    }
+    
+    bool isBalanced(TreeNode* root)
+    {
+        if(root==NULL)
+            return true;
+        return treeHight(root)!=-1;
+        
+    }
+};

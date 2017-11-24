@@ -45,3 +45,14 @@ public:
         return vi;
     }
 };
+// Start from end with initialization of two end of 1
+vector<int> getRow(int rowIndex) {
+    vector<int> re(rowIndex+1);
+    for(int i = 0; i <= rowIndex; ++i){
+        re[0] = re[i] = 1;
+        for(int j = i-1; j > 0; --j){
+            re[j] = re[j] + re[j-1]; 
+        }   
+    }
+    return re;
+}

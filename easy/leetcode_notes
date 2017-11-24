@@ -297,30 +297,31 @@
 	// a. From the most right (not left)
 	// b. Handle nums2 mainly, since nums1 will stay in itself	
 // }
-100. Same Tree
-{
-	a. Check whether a pointer is NULL:
-		if(p)
-			cout << "Not NULL" << endl;
-		if(!p)
-			cout << "Is NULL" << endl;
-	b. Process:
-	{
-		Think about process
-		Use character of Tree to 'devide branch' & 'recursion'
-	}	
-}
-101. Sysmmetric Tree
-{
-	a. Think base case and recursion
-	b. Create a helper function
-	c. One trick: Use same root, but flip tree to compare original with fliped
-}
-104. Maximum Depth Of Binary Tree
-{
-	a. DFS method comes to mind, recursion
-	b. BFS is also a solution, iteratively
-}
+// 100. Same Tree
+// {
+	// a. Check whether a pointer is NULL:
+	// 	if(p)
+	// 		cout << "Not NULL" << endl;
+	// 	if(!p)
+	// 		cout << "Is NULL" << endl;
+	// b. Process:
+	// {
+	// 	Think about process
+	// 	Use character of Tree to 'devide branch' & 'recursion'
+	// }	
+// }
+// 101. Sysmmetric Tree
+// {
+	// a. Think base case and recursion
+	// b. Create a helper function
+	// c. One trick: Use same root, but flip tree to compare original with fliped
+// }
+// 104. Maximum Depth Of Binary Tree(Height of binary tree)
+// {
+	// Always think about the base case
+	// a. DFS method comes to mind, recursion
+	// b. BFS is also a solution, iteratively
+// }
 107. Binary Tree Level Order Traversal II
 {
 	a. BFS solution, like Question_104. Need a Queue to pop parent layer
@@ -334,41 +335,50 @@
 	c. Find all root, then assign it left & right child
 	d. Do this as an iterative process
 }
-110. Balanced Binary Tree
-{
-	a. Need to understand the problem
-		Each node's depth of two subtrees never different by more than 1.
-	b. [1,2,3,4,null,null,9,8,null,null,10] one test case
-	c. Only make sure it is balanced from bottom, it can be balanced up until top
-	d. If only check 2 branch of root, it will miss the difference in each subtree. Check tree in 'b'
-	e. The difference is the criteria for balance 
-}
-111. Minimum Depth of Binary Tree
-{
-	a. Very similar to "Max Depth BT", use recursion and modify a few feature
-	b. [1,2] has min depth 2, not 1; Min depth: root to closest leaf; not root to root.
-}
-112. Path Sum
-{
-	a. Find the pattern: each recursion take (sum-curr->val) as search sum
-	b. handle base case
-	c. Special case, unless root is the only node, root cannot be only value of branch
-		[1,2] find 1, return false, because only branch is 1->2, which sum to 3 not 1
-}
-118. Pascals Triangle
-{
-	a. If size of vector has a pattern, declare its size before add value. 'push_back' take time	 
-	b. Find pattern
-}
-119. Pascal's Triangle II
-{
-	a. NICE to declare size in advance
-	b. Base case:	
-		level0 is [1]
-		level1 is [1,1]
-		level2: [1,2,1]
-	c. Nicer solution is solve from end
-}
+// 110. Balanced Binary Tree
+// {
+	// a. Need to understand the problem
+	// 	Each node's depth of two subtrees never different by more than 1.
+	// b. [1,2,3,4,null,null,9,8,null,null,10] one test case
+	// c. Only make sure it is balanced from bottom, it can be balanced up until top
+	// d. If only check 2 branch of root, it will miss the difference in each subtree. Check tree in 'b'
+	// e. The difference is the criteria for balance 
+// }
+// 111. Minimum Depth of Binary Tree
+// {
+	// a. Very similar to "Max Depth BT", use recursion and modify a few feature
+	// b. [1,2] has min depth 2, not 1; Min depth: root to closest leaf; not root to root.
+	// Root cannot be leaf in this question, that when min kicks in
+// }
+// 112. Path Sum
+// {
+	// a. Find the pattern: each recursion take (sum-curr->val) as search sum
+	// b. handle base case
+	// c. Special case, unless root is the only node, root cannot be only value of branch
+	// 	[1,2] find 1, return false, because only branch is 1->2, which sum to 3 not 1
+	// d. Final situation: when 
+	(sum-curr->val == 0 && !root->left && !root->right)
+// }
+// 118. Pascals Triangle
+// {
+	// a. If size of vector has a pattern, declare its size before add value. 'push_back' take time	 
+	// b. Find pattern
+	// c. When possible use vector as an array
+	// e.g. Declare the size of vector 
+	vec.resize(10); // size == 10
+	// initialize vector size
+	vector<vector<int> > vec(10); // vector of 10 vectors
+	// Array style assignment, instead of use 'push_back()', use as follow
+	r[i][j] = r[i-1][j-1] + r[i-1][j];
+// }
+// 119. Pascal's Triangle II
+// {
+	// a. NICE to declare size in advance
+	// b. Base case:	
+	// 	level0 is [1]
+	// 	level1 is [1,1]
+	// c. Nicer solution is solve from end, since size increases each iteration
+// }
 121. Best Time To Buy and Sell Stock
 {
 	a. When there is a example, try to go through it until the end. This helps understand question.
