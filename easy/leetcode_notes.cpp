@@ -322,19 +322,27 @@
 	// a. DFS method comes to mind, recursion
 	// b. BFS is also a solution, iteratively
 // }
-107. Binary Tree Level Order Traversal II
-{
-	a. BFS solution, like Question_104. Need a Queue to pop parent layer
-	b. std::reverse(vec.begin(), vec.end()) to reverse
-}
-108. Convert Sorted Array to Binary Search Tree
-{
-	a. BST left_child <= curr <= right_child, thus, root should be in middle of vector (left < middle < right, since vector is sorted) 
-	b. Create new vector using interator:
+// 107. Binary Tree Level Order Traversal II
+// {
+	// a. BFS solution, like Question_104. Need a Queue to pop parent layer
+	// b. to reverse
+	std::reverse(vec.begin(), vec.end()) 
+	For Tree Questions
+	{
+		consider following questions:
+		1. Base case: 0 node, 1 node, (2 nodes)
+		2. Handle leaves (NULL)
+		3. Always think about Tree structure (root, root->left, root->right), this is how things are recursive;
+	}
+// }
+// 108. Convert Sorted Array to Binary Search Tree
+// {
+	// a. BST left_child <= curr <= right_child, thus, root should be in middle of vector (left < middle < right, since vector is sorted) 
+	// b. Create new vector using interator:
 		vector<int> leftints(vec.begin(), num.begin()+middle);
-	c. Find all root, then assign it left & right child
-	d. Do this as an iterative process
-}
+	// c. Find all root, then assign it left & right child
+	// d. Do this as an iterative process
+// }
 // 110. Balanced Binary Tree
 // {
 	// a. Need to understand the problem

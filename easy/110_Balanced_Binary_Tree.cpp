@@ -27,17 +27,25 @@ public:
 class Solution {
 public:
     
+    // Make clear for each situation
     int treeHight(TreeNode* root){
+
         if(root==NULL)
             return 0;
+        // Calculate left length
         int leftlengh=treeHight(root->left);
         if(leftlengh==-1)
             return -1;
+        // Calculate right length
         int rightlengh=treeHight(root->right);
         if(rightlengh==-1)
             return -1;
+        // Calculate Difference, if greater than 1 than false (not balanced)
+        // For sub-trees
         if(abs(leftlengh - rightlengh)>1)
             return -1;
+
+        // After all the calcualtion, return max height
         return max(leftlengh,rightlengh)+1;
     }
     
