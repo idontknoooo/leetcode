@@ -387,29 +387,31 @@
 	// 	level1 is [1,1]
 	// c. Nicer solution is solve from end, since size increases each iteration
 // }
-121. Best Time To Buy and Sell Stock
-{
-	a. When there is a example, try to go through it until the end. This helps understand question.
-}
-122. Best Time To Buy and Sell Stock II
-{
-	a. Mathematics: 
-		Suppose a <= b <= c <= d, Max difference is d-a = (b-a)+(c-b)+(d-c)
-		Since for this question, you can't engage in multiple transaction.
-		Thus, the best we can do is: (b-a) + (d-c) <= d-a
-		Thus, as long as there is an increase sequence, (d-a) is the max value
-}
-125. Valid Palindrome
-{
+// 121. Best Time To Buy and Sell Stock
+// {
+	// a. When there is a example, try to go through it until the end. This helps understand question.
+// }
+// 122. Best Time To Buy and Sell Stock II
+// {
+	// a. Mathematics: 结合律 
+	// [1,2,6]: max = 6-1 = 5
+	// max = (2-1)+(6-2) = 6-2+2-1 = 5
+	// 	Suppose a <= b <= c <= d, Max difference is d-a = (b-a)+(c-b)+(d-c)
+	// 	Since for this question, you can't engage in multiple transaction.
+	// 	Thus, the best we can do is: (b-a) + (d-c) <= d-a
+	// 	Thus, as long as there is an increase sequence, (d-a) is the max value
+// }
+// 125. Valid Palindrome
+// {
 	#include <cctype>
-	a. isalnum(): check whether ialphanumeric (A-Za-z0-9)
-	b. isalpha(): Check whether letter (A-Za-z)
-	c. isdigit(): check whether digit (0-9)
+	isalnum() //: check whether ialphanumeric (A-Za-z0-9)
+	isalpha() //: Check whether letter (A-Za-z)
+	isdigit() //: check whether digit (0-9)
 	
-	d. Start from 2 sides, faster
-}
-136. Single Number
-{
+// 	d. Start from 2 sides, faster
+// }
+// 136. Single Number
+// {
 	a. A XOR A == 0;
 		0 ^ A == A, where A!=0	
 	b. Use 0^A, iterate entire vector, return A
@@ -417,7 +419,9 @@
 		#include <functional> // C++11
 		#include <numeric> // accumulate
 		accumulate(vec.begin(), vec.end(), 0, bit_xor<int>());
-}
+	d. Hashmap method
+	e. Mathematics method
+// }
 141. Linked List Cycle
 {
 	a. Faster-slower runner method, faster will meet slower eventually

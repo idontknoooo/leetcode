@@ -16,6 +16,7 @@ public:
 };
 // General Trick
 // A XOR A == 0
+// A XOR 0 == A
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
@@ -28,4 +29,42 @@ public:
     }
 };
 
+// Super clean solution
 return accumulate(nums.begin(), nums.end(), 0, bit_xor<int>());
+
+// Hashmap solution
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        unordered_set<int> us;
+        for(int num : nums){
+            if(us.find(num)==us.end())
+                us.insert(num);
+            else
+                us.erase(num);
+        }
+        return *us.begin();
+    }
+};
+
+// Mathematics Solution
+// 2*unique_sum - un_unique_vector = single value
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        unordered_set<int> us;
+        for(int num : nums){
+            if(us.find(num)==us.end())
+                us.insert(num);
+        }
+        int tmp = 0;
+        for(int num : us){
+            tmp += num;
+        }
+        tmp *= 2;
+        for(int num : nums){
+            tmp -= num;
+        }
+        return tmp;
+    }
+};
