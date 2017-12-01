@@ -58,10 +58,9 @@ class MinStack {
 			b.push(x);
 	}
 	void pop() {
-		int x = a.top();
-		a.pop();
-		if (b.top() == x) // stored repeat and min
+		if (b.top() == a.top()) // stored repeat and min
 			b.pop();
+        a.pop();
 	}
 	int top() {
 		return a.top();
@@ -70,4 +69,54 @@ class MinStack {
 		return b.top();
 	}
 };
-
+// Best Method
+// Stack method
+class MinStack {
+private:
+    // if top negative, then min_value was changed, can restore old_min = curr_min - top
+    // if top non-negative, then min_value was same, but can restore curr_value = curr_min + top
+    stack<long> st;
+    long curr_min;
+public:
+    /** initialize your data structure here. */
+    MinStack() {
+        curr_min = 0;
+    }
+    
+    void push(int x) {
+        if (st.empty()) {
+            // special handling for first element
+            st.push(0);
+            curr_min = x;
+        } else {
+            // Store information of minimun number in each entry
+            // subtract all number just to make sure they are all positive, 
+            // except for current_min(negative)
+            long top = x - curr_min;
+            st.push(top);
+            if (top < 0) {
+                curr_min = x;
+            }
+        }
+    }
+    
+    void pop() {
+        long top = st.top();
+        if (top < 0) {
+            curr_min -= top;
+        }
+        st.pop();
+    }
+    
+    int top() {
+        long top = st.top();
+        if (top < 0) {
+            return curr_min;
+        }
+        return curr_min + top;
+    }
+    
+    int getMin() {
+        return curr_min;    
+    }
+};

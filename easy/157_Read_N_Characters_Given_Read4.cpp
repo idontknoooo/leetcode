@@ -13,10 +13,8 @@ public:
         int res = 0;
         while (n > 0) {
             int tmp = min(read4(buf), n);
-            res += tmp;
-            buf += tmp;
-            if (tmp < 4)
-                break;
+            res += tmp; // count the number of char we can read
+            buf += tmp; // tell buf how many we have read
             n -= 4;
         }
         return res;

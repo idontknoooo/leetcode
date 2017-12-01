@@ -422,16 +422,28 @@
 	d. Hashmap method
 	e. Mathematics method
 // }
-141. Linked List Cycle
-{
-	a. Faster-slower runner method, faster will meet slower eventually
-	b. unordered_set methods 
-}
-155. Min Stack
-{
-	a. Stack is faster than vector
-	b. To make constant min value return, spend time on storing val when do other operations
-}
+// 141. Linked List Cycle
+// {
+	// a. Faster-slower runner method, faster will meet slower eventually
+	// b. unordered_set methods 
+// }
+// 155. Min Stack
+// {
+	// a. Stack is faster than vector
+	// b. To make constant min value return, spend time on storing val when do other operations
+	// c. Methods:
+	// 	1. vector<int> && min_element()
+	// 	2. two stack<int>, one for element, one for Minimum
+	// 	3. Mathematics method: use minus to store information of current_min for each entry
+	// 		Very Smart!
+	stack<int> s;
+	s.push(3);
+	s.top(); // return last in element
+	s.pop(); // not return anything
+	s.empty(); 
+	#include <algorithm> // under 'algorithm', use min_element(), return an iterator
+	*min_element(v.begin(), v.end()) // search min value for data structure
+// }
 157. Read N Characters Given Read4
 {
 	a. For this question, read4() can be only used in one clause for read, otherwise, it will messed up
@@ -440,28 +452,35 @@
 		15-4 leave 3, i-=4
 		15/4 mod 3, need variables for dividend & mod
 }
-160. Intersection Of Two Linked Lists
-{
-	a. If no intersection, both node move to null
-	b. To make two lists iterate in same pace, just need to find their length difference
-	c. Then the longer one start from (length - diff) so they will in same pace
-}
-167. Two Sum II - Input Array Is Sorted
-{
-	a. This question assume there must be a solution (two numbers)
-	b. Start from 2 end, 
-		if sum > target, right end move left
-		if sum <= target, left end move right
-		if sum == target, return vector<int> ({left, right})
-}
-168. Excel Sheet Column Title
-{
-	a. Handle a(1) & z(26) special case
-	b. Use n/26 to generate each leter
-	c. Also, see a recursive method
-	d. Number to Letter: (--num%26) + 'A'
-		1 -> A
-		26-> Z
-		[1-26] % 26 = [1-25,0]
-		[0-25] % 26 = [0, 25]
-}
+// 160. Intersection Of Two Linked Lists
+// {
+	// a. If no intersection, both node move to null
+	// b. To make two lists iterate in same pace, just need to find their length difference
+	// c. Then the longer one start from (length - diff) so they will in same pace
+	// d. Make 2 list a circle, then they will have same length 
+	// 	and they can eliminate length difference by switching list
+// }
+// 167. Two Sum II - Input Array Is Sorted
+// {
+	// a. This question assume there must be a solution (two numbers)
+	// b. Start from 2 end, 
+	// 	if sum > target, right end move left
+	// 	if sum <= target, left end move right
+	// 	if sum == target, return vector<int> ({left, right})
+	// c. Different from Two Sum I, this question wants to return position of 2 elements,
+	// 	in this case, using array [] operation is better.
+// }
+// 168. Excel Sheet Column Title
+// {
+	// a. Handle a(1) & z(26) special case
+	// b. Use n/26 to generate each leter
+	// c. Also, see a recursive method
+	// d. Number to Letter: (--num%26) + 'A'
+	// 	1 -> A
+	// 	26-> Z
+	// 	[1-26] % 26 = [1-25,0]
+	// 	[0-25] % 26 = [0, 25]
+	// e. Methods:
+	// 	1. Iterative
+	// 	2. Recursive
+// }
