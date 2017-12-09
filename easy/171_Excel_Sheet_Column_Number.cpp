@@ -10,3 +10,18 @@ public:
 // return result;
     }
 };
+
+// Same speed but much faster
+// Horner's Algorithm 秦九韶算法
+class Solution {
+public:
+    int titleToNumber(string s) {
+        int res = 0;
+        for (char c:s) {
+        	// res = 26*re + c-'A'+1;
+            res *= 26;
+            res += c - 'A' + 1;
+        }
+        return res;
+    }
+};
