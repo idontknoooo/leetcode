@@ -64,7 +64,7 @@
 	1. unordered_multiset<int> nums;	// Allow repeat
 	2. x << y  // equals x * (2^y)
 	// 	e.g. 2 << 1: 2*2 = 4
-	3. 
+	3. Handle 4 = 2 + 2 // multiple same number
 // }
 // 171. Excel Sheet Column Number
 // {

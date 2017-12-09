@@ -7,7 +7,7 @@ public:
     }
     bool find(int value) {
         for (int i : nums) {
-            int count = i == value - i ? 1 : 0; // handle 0-0==0
+            int count = (i == value - i) ? 1 : 0; // handle 0-0==0
             if (nums.count(value - i) > count) {
                 return true;
             }
@@ -37,12 +37,12 @@ public:
     
     /** Find if there exists any pair of numbers which sum is equal to the value. */
     bool find(int value) {
-        if((low<<1)>value || (high<<1)<value)return false;
+        if((low<<1)>value || (high<<1)<value) return false;
         for(auto e:imap)
         {
             if(2*e.first==value)
             {
-                if(e.second>=2)return true;
+                if(e.second>=2) return true;
             }
             else if(imap.find(value - e.first)!=imap.end())return true;
         }
