@@ -18,6 +18,9 @@ public:
 
 // 39 ms Design
 class TwoSum {
+private:
+    unordered_map<int, int> imap;
+    int low, high;
 public:
     /** Initialize your data structure here. */
     TwoSum() {
@@ -27,7 +30,7 @@ public:
     
     /** Add the number to an internal data structure.. */
     void add(int number) {
-        imap[number]++;
+        imap[number]++;  // Key is number, value is the frequency
         low=min(low, number);
         high=max(high, number);
     }
@@ -45,9 +48,6 @@ public:
         }
         return false;
     }
-private:
-    unordered_map<int, int> imap;
-    int low, high;
 };
 /**
  * Your TwoSum object will be instantiated and called as such:
