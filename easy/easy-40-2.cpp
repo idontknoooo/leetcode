@@ -70,3 +70,8 @@
 // {
 		// a. Horner's Algorithm
 // }
+// 189. Rotate Array
+// {
+	1. reverse(vec.begin(), vec.end());
+	// 2. Also, think about extreme case, like over size
+// }
