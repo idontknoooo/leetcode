@@ -75,3 +75,11 @@
 	1. reverse(vec.begin(), vec.end());
 	// 2. Also, think about extreme case, like over size
 // }
+// 203. Remove Linked List Elements
+// {
+	// 1. Main difference: The beginning vs in the middle. Not a difficult one.
+// }
+// 217. Contains Duplicate
+// {
+	// 1. Sort and iterate
+// }
