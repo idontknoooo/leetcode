@@ -83,3 +83,18 @@
 // {
 	// 1. Sort and iterate
 // }
+// 219. Contains Duplicate III
+// {
+	  // use hashset to keep distance k, so that there won't be any repeat
+// }
+// 225. Implement Stack Using Queues
+// {
+	// 1. Queue pop() doesn't return anything
+	// 2. Queue top() and empty() is same as Stack
+	// 3. Queue push() to the end, while stack push() to the top
+// }
+// 226. Invert Binary Tree
+// {
+	// 1. Always check empty tree
+	// 2. Recursively: sway left & right by recursive to the leaf
+// }
