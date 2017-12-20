@@ -98,3 +98,16 @@
 	// 1. Always check empty tree
 	// 2. Recursively: sway left & right by recursive to the leaf
 // }
+// 232. Implement Queue Using Stacks
+//{
+  //  1. stack top == queue front
+  //  2. Queue always add to back
+//}
+// 234. Palindrome Linked List
+// {
+  //  1. Double pointer: reverse list from middle to end, and compare to begining to mid
+// }
+// 237. Delete Node in a linked list
+// {
+  //   1. kinda stupid, but just skip this current node
+// }
