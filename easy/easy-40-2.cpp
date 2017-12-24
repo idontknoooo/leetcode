@@ -111,3 +111,11 @@
 // {
   //   1. kinda stupid, but just skip this current node
 // }
+// 238. Move Zeros
+// {
+	// 1. Double pointer to move non-zero number to front and make all rest position Zero
+// }
+// 290. Word Pattern
+// {
+	// 1. Use stringstream & unordered_map & unordered_set 
+// }
