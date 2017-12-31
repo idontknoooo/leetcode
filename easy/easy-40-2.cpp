@@ -134,3 +134,13 @@
 	// 	sum of [2, 4] is: [0,4] - [0-1] = 8 - 6 = 2
 	// 	sum of [i, j] = [0, j] - [0, i-1]
 // }
+// 326. Power of three 
+// {
+	// 1. Normal method: loop divide 3
+	// 2. Use mathematic method: check "326_Power_of_Three.cpp"
+// }
+// 342. Power of Four
+// {
+	// 1. Normal Method: loop divide 4
+	// 2. Bitwise operation
+// }
