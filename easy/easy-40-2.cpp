@@ -119,3 +119,18 @@
 // {
 	// 1. Use stringstream & unordered_map & unordered_set 
 // }
+// 303. Range Sum Query - Immutable
+// {
+	// 1. Use continous sum: 
+	// e.g.
+	// 	arr = [2, 4, -5, 6, 1, 4]
+	// 	to
+	// 	sum = [2, 2+4, 2+4+(-5), 2+4+(-5)+6, ....]
+	// 	equals to
+	// 	sum = [2, 6, 1, 7, 8, 12]
+	// 	then:
+	// 	sum of [0, 4] is: 8
+	// 	sum of [0, 1] is: 6
+	// 	sum of [2, 4] is: [0,4] - [0-1] = 8 - 6 = 2
+	// 	sum of [i, j] = [0, j] - [0, i-1]
+// }
