@@ -144,3 +144,27 @@
 	// 1. Normal Method: loop divide 4
 	// 2. Bitwise operation
 // }
+// 344. Reverse string
+// {
+	// 1. Use extra space by initialize a variable (faster)
+	// 2. No extra space by swap corresponding position (save space but slower)
+// }
+// 345. Reverse Vowels of a string
+// {
+	// 1. Several functions:
+		tolower('U') // Convert U to u
+		string s;
+		// return the position when found character in that string. Start from position j
+		s.find_first_of("aeiouAEIOU", j); 
+	// 2. Main method: Double pointer. A pointer from front, the other pointer from end. Use swap when found both vowels
+	// 3. In this question, try avoid use tolower() conversion since find in 10 chars will faster than type conversion
+	// 4. 
+// }
+// 349. Intersection of Two Arrays
+// {
+	// 1. Declare a unordered_set based on a vector 
+	vector<int> num1;
+	unordered_set<int> m(num1.begin(), num1.end());
+	m.count(a) // count the number of 'a' in set m
+	m.erase(a) // remove a from m
+// }
