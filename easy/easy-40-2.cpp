@@ -168,3 +168,26 @@
 	m.count(a) // count the number of 'a' in set m
 	m.erase(a) // remove a from m
 // }
+// 350. Intersection of Two Arrays II 
+// {
+	// 1. Slow and space wasting method: use unordered_map with vector
+	// 2. Same logic, use an unordered_multiset will be faster
+	// 3. use <algorithm>, first sort 2 arrays
+	set_intersection(arr1.begin(), arr1.end(), arr2.begin(), arr2.end(), arr1.begin(), arr1.end());
+	set_intersection(start, end, start1, end1, store, compare);
+// }
+// 367. Vaild Perfect Square
+// {
+	// 1. Bisection method 
+	// 2. Newton method 
+	// 3. Q_rsqrt method // https://en.wikipedia.org/wiki/Fast_inverse_square_root
+// }
+// 371. Sum of Two Integers
+// {
+// 	1. https://leetcode.com/problems/sum-of-two-integers/discuss/84278
+// 	2. Bitwise operation 
+// }
+// 374. Guess Number Higher or Lower
+// {
+// 	Guess number using bisection method
+// }
