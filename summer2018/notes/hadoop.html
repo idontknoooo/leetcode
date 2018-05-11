@@ -15157,6 +15157,266 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Other">Other<a class="anchor-link" href="#Other">&#182;</a></h1><h2 id="Pros-&amp;-Cons">Pros &amp; Cons<a class="anchor-link" href="#Pros-&amp;-Cons">&#182;</a></h2><h3 id="Pros">Pros<a class="anchor-link" href="#Pros">&#182;</a></h3><h4 id="Scale">Scale<a class="anchor-link" href="#Scale">&#182;</a></h4><ul>
+<li>Distributed System: Live with failure (except NameNode)</li>
+<li>Hadoop1: Support 4000+ nodes</li>
+<li>Hadoop2: Support 10K+ nodes
+#### Reduce cost</li>
+<li>Commodity hardware</li>
+<li>Free software</li>
+<li>Widely available: AWS, Azure, GCE</li>
+<li>Commercial support available: Hortonworks, Cloudera, MAPR
+#### Rich Ecosystem</li>
+<li>Lots of software available</li>
+</ul>
+<h3 id="Cons">Cons<a class="anchor-link" href="#Cons">&#182;</a></h3><h4 id="Batch-oriented">Batch oriented<a class="anchor-link" href="#Batch-oriented">&#182;</a></h4><ul>
+<li>Not for small data
+#### High latency</li>
+<li>Data are in hard drive, not fast enough
+#### Single point of failure</li>
+<li>NameNode</li>
+<li>Resource manager (YARN)</li>
+</ul>
+<h2 id="Hadoop-vs-MPI">Hadoop vs MPI<a class="anchor-link" href="#Hadoop-vs-MPI">&#182;</a></h2><h3 id="Hadoop">Hadoop<a class="anchor-link" href="#Hadoop">&#182;</a></h3><ul>
+<li>Industry</li>
+<li>4000+ Nodes</li>
+<li>Heterogeneous nodes</li>
+<li>Deal with failure</li>
+<li>Batch processing
+### MPI</li>
+<li>Academic</li>
+<li>Dozens of nodes</li>
+<li>Homogenous nodes</li>
+<li>Failure is not allowed</li>
+<li>Realtime processing </li>
+</ul>
+<h2 id="Hadoop-vs-RDBMS">Hadoop vs RDBMS<a class="anchor-link" href="#Hadoop-vs-RDBMS">&#182;</a></h2><h3 id="Hadoop">Hadoop<a class="anchor-link" href="#Hadoop">&#182;</a></h3><ul>
+<li>Batch processing</li>
+<li>OLAP: Online Analytical Processing</li>
+<li>No transaction</li>
+<li>Scale
+### RDBMS</li>
+<li>Realtime</li>
+<li>OLTP: Online transaction processing</li>
+<li>ACID: Atomicity, Consistency, Isolation, Durability</li>
+<li>Not scale</li>
+</ul>
+<h2 id="Hadoop-vs-Spark">Hadoop vs Spark<a class="anchor-link" href="#Hadoop-vs-Spark">&#182;</a></h2><h3 id="Hadoop">Hadoop<a class="anchor-link" href="#Hadoop">&#182;</a></h3><ul>
+<li>Batch job, spill to disk</li>
+<li>ETL, log processing, data analysis etc.</li>
+<li>High latency</li>
+<li>Java
+### Spark</li>
+<li>Batch job, in memory</li>
+<li>Machine Learning</li>
+<li>Low latency (in memory)</li>
+<li>Scala (language)</li>
+</ul>
+<h2 id="Other">Other<a class="anchor-link" href="#Other">&#182;</a></h2><ul>
+<li>Source code available</li>
+<li>Apache Licensed (no copy-left issue: You don't have to open source for the software built upon Hadoop)</li>
+<li>Open community</li>
+<li>Versatile community</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Components-of-Hadoop2">Components of Hadoop2<a class="anchor-link" href="#Components-of-Hadoop2">&#182;</a></h2><ul>
+<li>Storage: HDFS (lowest level)</li>
+<li>Resource: YARN (above HDFS)</li>
+<li>Compute: MapReduce, Spark, Tez (above Resource layer)</li>
+</ul>
+<h2 id="HDFS-Design-Goal">HDFS Design Goal<a class="anchor-link" href="#HDFS-Design-Goal">&#182;</a></h2><ul>
+<li>Distributed filesystem</li>
+<li>Very large file</li>
+<li>Sequential reads</li>
+<li>Optimized for read</li>
+<li>Replicated</li>
+</ul>
+<h2 id="HDFS-Block">HDFS Block<a class="anchor-link" href="#HDFS-Block">&#182;</a></h2><ul>
+<li>Data are stored in block</li>
+<li>Typical block size is 128M</li>
+<li>Not good for small file<ul>
+<li>Waste storage</li>
+<li>Add burden to namenode (metadata information)</li>
+</ul>
+</li>
+</ul>
+<h2 id="HDFS-components">HDFS components<a class="anchor-link" href="#HDFS-components">&#182;</a></h2><ul>
+<li>NameNode<ul>
+<li>File name, size, permission, location, timestamp, etc</li>
+<li>Not the data itself </li>
+<li>All metadata in memory<ul>
+<li>Need a lot of memory (64G)</li>
+<li>Even garbage collection could takes a long time</li>
+</ul>
+</li>
+<li>fsimage + edits log (avoid namenode dead)</li>
+<li>Merge happens<ul>
+<li>When NameNode starts</li>
+<li>If secondary NameNode is up and checkpoint due</li>
+</ul>
+</li>
+<li>Complete information in memory</li>
+</ul>
+</li>
+<li>Secondary NameNode: Help merge <code>edits log</code> &amp; <code>fsimage</code> to new fsimage</li>
+<li>Standby NameNode: A backup for NameNode</li>
+<li>DataNode <ul>
+<li>Store data blocks</li>
+<li>Every block have 3 replica </li>
+</ul>
+</li>
+</ul>
+<h2 id="Read-Pipeline">Read Pipeline<a class="anchor-link" href="#Read-Pipeline">&#182;</a></h2><ul>
+<li>HDFS client ask HDFS for information, HDFS will ask NameNode (client JVM is in client node)</li>
+<li>NameNode will get block locations</li>
+<li>Then client can read from HDFS</li>
+<li>HDFS will send read request to DataNode (there are 3 datanode store this information, client will decide which datanode to read from)</li>
+</ul>
+<h2 id="Write-Pipeline">Write Pipeline<a class="anchor-link" href="#Write-Pipeline">&#182;</a></h2><ul>
+<li>HDFS client ask HDFS for information, HDFS will ask NameNode (client JVM is in client node)</li>
+<li>NameNode will get block locations (3 datanodes)</li>
+<li>Then client can write to HDFS once, datanode will write 3 times</li>
+</ul>
+<h2 id="Append-(HDFS-only-support-this)">Append (HDFS only support this)<a class="anchor-link" href="#Append-(HDFS-only-support-this)">&#182;</a></h2><ul>
+<li>Useful for HBase</li>
+<li>Take couple of years to implement</li>
+<li>Hadoop fs-appendToFile README.txt studenttab10k</li>
+</ul>
+<h2 id="Other-features">Other features<a class="anchor-link" href="#Other-features">&#182;</a></h2><ul>
+<li>Snapshot: Metadata backup (don't care data block)</li>
+<li>NFS: Network file system (share storage)</li>
+<li>Federation: Separate namenode to several small one then merge back </li>
+<li>TDE(transparent data encryption)</li>
+</ul>
+<h2 id="YARN">YARN<a class="anchor-link" href="#YARN">&#182;</a></h2><ul>
+<li>Resource Manager (master)<ul>
+<li>Node Managers (slave)</li>
+</ul>
+</li>
+<li>Yarn Application Pipeline<ul>
+<li>Client -&gt; Resource Manager -&gt; Node Manager (Application Master) -&gt; Node Manager (Container)</li>
+</ul>
+</li>
+<li>Example (MapReduce)<ul>
+<li>Client -&gt; Resource Manager -&gt; Node Manager (Applicatin Master) -&gt; Node Managers (Map &amp; Reduce)</li>
+</ul>
+</li>
+<li>Pluggable resource scheduler<ul>
+<li>Capacity scheduler</li>
+<li>Fair scheduler</li>
+</ul>
+</li>
+<li>Where to allocate container<ul>
+<li>Container specification: ram/cpu</li>
+<li>Impose uert unit</li>
+</ul>
+</li>
+<li>Single point of failure    </li>
+</ul>
+<h2 id="MapReduce">MapReduce<a class="anchor-link" href="#MapReduce">&#182;</a></h2><ul>
+<li>Map: Doing in parallel</li>
+<li>Reduce: Doing sequentially</li>
+<li>Example:<ul>
+<li>Input file -&gt; split in multiple -&gt; Map in parallel -&gt; Combine and Reduce </li>
+<li>Input file -&gt; split in multiple -&gt; Map in parallel -&gt; Shuffle -&gt; Reduce in Parallel</li>
+</ul>
+</li>
+</ul>
+<h2 id="Hadoop-Ecosystem">Hadoop Ecosystem<a class="anchor-link" href="#Hadoop-Ecosystem">&#182;</a></h2><h3 id="Job-oriented">Job oriented<a class="anchor-link" href="#Job-oriented">&#182;</a></h3><ul>
+<li>Kafka: Data injection</li>
+<li>Sqoop: 
+### Long running</li>
+<li>Pheonix: </li>
+<li>HBase: Key-value store</li>
+<li>Accumulo: Key-value store</li>
+<li>Storm: Real tiem process engine</li>
+<li>Slider: </li>
+<li>Ambari: Cluster management</li>
+<li>ZooKeeper: Information </li>
+<li>Ranger: Security</li>
+<li>Sentry: Security</li>
+</ul>
+<h3 id="Core-Engine">Core Engine<a class="anchor-link" href="#Core-Engine">&#182;</a></h3><ul>
+<li>MapReduce</li>
+<li>Spark</li>
+<li>Tez</li>
+<li>Flink</li>
+</ul>
+<h3 id="Data-Analysis-Tool">Data Analysis Tool<a class="anchor-link" href="#Data-Analysis-Tool">&#182;</a></h3><ul>
+<li>Pig</li>
+<li>Hive</li>
+<li>Cascading</li>
+<li>Spark</li>
+<li>Flink</li>
+</ul>
+<h3 id="No-SQL">No SQL<a class="anchor-link" href="#No-SQL">&#182;</a></h3><ul>
+<li>Pheonix</li>
+<li>Omid</li>
+<li>HBase</li>
+<li>Accumulo (High security level)</li>
+</ul>
+<h3 id="Realtime-Engine">Realtime Engine<a class="anchor-link" href="#Realtime-Engine">&#182;</a></h3><ul>
+<li>Storm</li>
+<li>Spark</li>
+<li>Flink</li>
+<li>Samza</li>
+<li>Apex</li>
+</ul>
+<h3 id="Data-Ingestion">Data Ingestion<a class="anchor-link" href="#Data-Ingestion">&#182;</a></h3><ul>
+<li>Sqoop</li>
+<li>Flume</li>
+</ul>
+<h3 id="MPP">MPP<a class="anchor-link" href="#MPP">&#182;</a></h3><ul>
+<li>Presto</li>
+<li>Impala</li>
+<li>Drill</li>
+</ul>
+<h3 id="Data-Warehouse">Data Warehouse<a class="anchor-link" href="#Data-Warehouse">&#182;</a></h3><ul>
+<li>Druid</li>
+<li>Kylin</li>
+<li>Tajo</li>
+</ul>
+<h3 id="Data-Format">Data Format<a class="anchor-link" href="#Data-Format">&#182;</a></h3><ul>
+<li>Avro</li>
+<li>ORC</li>
+<li>Parque</li>
+</ul>
+<h3 id="Workflow">Workflow<a class="anchor-link" href="#Workflow">&#182;</a></h3><ul>
+<li>Oozie</li>
+<li>Azkaban</li>
+</ul>
+<h3 id="Security">Security<a class="anchor-link" href="#Security">&#182;</a></h3><ul>
+<li>Ranger</li>
+<li>Sentry</li>
+</ul>
+<h3 id="Data-Goverance">Data Goverance<a class="anchor-link" href="#Data-Goverance">&#182;</a></h3><ul>
+<li>Linearge, replication, life cycle, discovery</li>
+<li>Atlas</li>
+<li>Navigator</li>
+</ul>
+<h3 id="UI">UI<a class="anchor-link" href="#UI">&#182;</a></h3><ul>
+<li>Hue</li>
+<li>Zeppelin</li>
+</ul>
+<h3 id="Cluster-Management">Cluster Management<a class="anchor-link" href="#Cluster-Management">&#182;</a></h3><ul>
+<li>Ambari</li>
+<li>Cloudera Manager</li>
+</ul>
+
+</div>
+</div>
+</div>
     </div>
   </div>
 </body>
