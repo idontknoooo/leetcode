@@ -23,6 +23,12 @@ string::npos // means "until the end of the string". This constant is defined wi
 // 3. Zero
 // 4. Empty container
 
+/* Bitwise Operation */
+int a = 4;
+a>>1          // Equal to a/2 = 2;
+cout << a>>1; // Illegal (conflict after cout)
+int b = a>>1; // Legal. b will equal to 2
+
 
 /* Notice */
 // 1. Reference vs Pointer vs Value
@@ -32,3 +38,6 @@ string::npos // means "until the end of the string". This constant is defined wi
 INT_MAX // Max of int in C++, <climits>
 INT_MIN // Min of int in C++
 size_t  // Could be any unsigned type: unsigned char, unsigned int, unsigned long etc.
+
+/* Methods */
+// Newton's Method

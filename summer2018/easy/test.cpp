@@ -4,10 +4,9 @@
 using namespace std;
 
 int main(){
-  cout << string::npos << endl;
-  string s = "abc";
-  if(s.find('a') != -1){
-    cout << "FOUND";
-  } else 
-    cout << "NOT FOUND";
+  string s = "1";
+  string k = "";
+  k += s + '1';
+  cout << s << endl;
+  cout << k << endl;
 }
