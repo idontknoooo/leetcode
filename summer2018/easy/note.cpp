@@ -15,6 +15,11 @@ string ss = "([{";
 if(ss.find('(') != string::npos) // Found (exist in string) 
 if(ss.find('(') != -1)           // Same as above 
 string::npos // means "until the end of the string". This constant is defined with a value of -1, which because size_t is an unsigned integral type, it is the largest possible representable value for this type. 
+to_string(8); // Convert int, double .. to string
+
+
+/* Character */
+int a = '5' - '0' // Same as 5-0. Char arithematics
 
 
 /* Edge Case */
@@ -22,6 +27,7 @@ string::npos // means "until the end of the string". This constant is defined wi
 // 2. Negative number
 // 3. Zero
 // 4. Empty container
+
 
 /* Bitwise Operation */
 int a = 4;
@@ -40,4 +46,5 @@ INT_MIN // Min of int in C++
 size_t  // Could be any unsigned type: unsigned char, unsigned int, unsigned long etc.
 
 /* Methods */
-// Newton's Method
+// Binary search: search sorted
+// Newton Iterative method: sqrt()
