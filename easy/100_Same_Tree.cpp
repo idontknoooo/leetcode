@@ -29,7 +29,9 @@ public:
         if (h) {
             v = h->val;
             if (TreeNode *p = h->left) {
-                while (p->right && p->right != h) p = p->right;
+                while (p->right && p->right != h) 
+                    p = p->right;
+
                 if (p->right) {
                     h = h->right;
                     p->right = NULL;

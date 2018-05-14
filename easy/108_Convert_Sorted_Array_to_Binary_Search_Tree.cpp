@@ -43,13 +43,13 @@ TreeNode* sortedArrayToBST(vector<int>& num){
 TreeNode* helper(TreeNode* tn, vector<int>& num, int start, int end){
 
     if(start < end){
-     int tmp = (end+start)/2;
+        int tmp = (end+start)/2;
         tn = new TreeNode(num[tmp]);
 
-     tn->left = helper(tn->left, num, start, tmp);
-     tn->right = helper(tn->right, num, tmp+1, end);
+        tn->left = helper(tn->left, num, start, tmp);
+        tn->right = helper(tn->right, num, tmp+1, end);
         return tn;
     }
     else
-     return NULL;
+        return NULL;
 }
