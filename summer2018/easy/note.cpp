@@ -1,4 +1,4 @@
-/* if */
+/* if statement */
 // 1. 101-symmetric-tree: if simplify
 func(){
   if(a)
@@ -19,11 +19,17 @@ return {}      // Empty literal
 vector<int> vec;
 vec['X'] = 1;  // Use character as index
 // Some questions, you can intialize the size first then add value and add from end to begin: 118-pascals-triangle
+vec.back() == vec[vec.size()-1]; // Use vec.back
+
+
+/* Stack */
+// Time series min_stack method: 155: Min stack
 
 
 /* Unordered Map */
 unordered_map<int, int> um;
 if(um.find(kk) != um.end()) // Found (exist in map)
+// For sorted vector, you no need unordered map
 
 
 /* string */
@@ -36,6 +42,8 @@ to_string(8); // Convert int, double .. to string
 
 /* Character */
 int a = '5' - '0' // Same as 5-0. Char arithematics
+'A' + 1           // return 66, since 'A' is 65
+(char)('A' + 1)   // return B , type casting
 
 
 /* Tree */
@@ -50,6 +58,10 @@ Treenode* func()  // When create new TreeNode() need to return cannot be void. 1
 //  mid+1, end   // right subtree
 
 
+/* Linked List */
+// Double pointer: slow vs fast to detect whether there is a cycle
+
+
 /* Edge Case */
 // 1. int vs long vs long long
 // 2. Negative number
@@ -62,19 +74,33 @@ int a = 4;
 a>>1          // Equal to a/2 = 2;
 cout << a>>1; // Illegal (conflict after cout)
 int b = a>>1; // Legal. b will equal to 2
+int tmp = a^a           // return 0, since a==a
+int tmp = 0^a           // return a. 1^0->1, 0^0->0
 
 
 /* Notice */
 // 1. Reference vs Pointer vs Value
 
 
-/* Other */
+/* Standard Library */
 INT_MAX // Max of int in C++, <climits>
 INT_MIN // Min of int in C++
 size_t  // Could be any unsigned type: unsigned char, unsigned int, unsigned long etc.
 return; // Can be used in void function, this doesn't return anything
 NULL    // not null;
 nullptr // same as above
+isalpha() // Check if it's letter
+isdigit() // Check if it's number 
+isalnum() // Check if it's letter or number
+sort(vec.begin(), vec.end());// Sort vector
+// Below can replace a 1 line for loop of a vector
+accumulate(num.begin(), num.end(), 0, bit_xor<int>());
+min_element(num.begin(), num.end(), val) // Return iterator, 
+*min_element() // Return value by de-reference
+
+
+/* Other */ 
+if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 
 /* Methods */
 // Binary search: search sorted
