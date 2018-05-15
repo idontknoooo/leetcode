@@ -1,18 +1,15 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 //#include <string>
 using namespace std;
 
 int main(){
-//  int a = 1, b = 0, c = 5;
-//  int x = a^a;
-//  int y = a^a^c;
-//  cout << x << endl;
-//  cout << y << endl;
-  vector<int> a = {1,2};
-  cout << a.back() << " _ " << a[a.size()-1] << endl;
-  cout << 'A' + 1 << endl;
-  cout << (char)('A' + 1) << endl;
-
+  unordered_map<int, int> um;
+  vector<int> vec = {1,2,3,4,5,6};
+  for(int i = 0; i < vec.size(); ++i){
+    int tmp = vec[i]<<1;
+    cout << tmp << endl;
+  }
   return 0;
 }

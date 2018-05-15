@@ -20,6 +20,7 @@ vector<int> vec;
 vec['X'] = 1;  // Use character as index
 // Some questions, you can intialize the size first then add value and add from end to begin: 118-pascals-triangle
 vec.back() == vec[vec.size()-1]; // Use vec.back
+k %= vec.size() // rotate number cannot more than length of vector
 
 
 /* Stack */
@@ -29,7 +30,11 @@ vec.back() == vec[vec.size()-1]; // Use vec.back
 /* Unordered Map */
 unordered_map<int, int> um;
 if(um.find(kk) != um.end()) // Found (exist in map)
+um[kk] // Return 0 if doesn't exist, BUT if the value is 0, then there is a misleading singal
+if(um[kk])                  // Exist, but it will missing when value is 0
+if(!um[kk])                 // NOT "Not Found", since it might because the value is 0
 // For sorted vector, you no need unordered map
+
 
 
 /* string */
@@ -72,6 +77,7 @@ Treenode* func()  // When create new TreeNode() need to return cannot be void. 1
 /* Bitwise Operation */
 int a = 4;
 a>>1          // Equal to a/2 = 2;
+a<<1          // Equal to a*2 = 8;
 cout << a>>1; // Illegal (conflict after cout)
 int b = a>>1; // Legal. b will equal to 2
 int tmp = a^a           // return 0, since a==a
@@ -105,9 +111,12 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 /* Methods */
 // Binary search: search sorted
 // Newton Iterative method: sqrt()
+// Double pointer: Fast & slow pointer in containers like linked list, vector which can be traversed
+// Moore voting algorithm: https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm . 169: Majority element
 
 
 /* To be solved */ 
 // 100. Same Tree: Iterative method
 // 104. Maximum depth of binary tree: BFS method
 // 107. Binary Tree Level Order Traversal II: Recursive && DFS
+// 172. Factorial Tailing zeros
