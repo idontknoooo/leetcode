@@ -76,12 +76,14 @@ Treenode* func()  // When create new TreeNode() need to return cannot be void. 1
 
 /* Bitwise Operation */
 int a = 4;
-a>>1          // Equal to a/2 = 2;
-a<<1          // Equal to a*2 = 8;
+a>>1          // Equal to a/2 = 2; Also, remove the most right bit
+a<<1          // Equal to a*2 = 8; Also, remove most left bit and add 0 from most right bit
 cout << a>>1; // Illegal (conflict after cout)
 int b = a>>1; // Legal. b will equal to 2
 int tmp = a^a           // return 0, since a==a
 int tmp = 0^a           // return a. 1^0->1, 0^0->0
+n &= n-1      // Change 1 bit at a time, make bit with value 1 to 0 one by one. 1 will become to 0 by &, and no new '1' will occur
+n & 1         // Only keep most right bit and ingore all other bit
 
 
 /* Notice */
@@ -113,6 +115,7 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // Newton Iterative method: sqrt()
 // Double pointer: Fast & slow pointer in containers like linked list, vector which can be traversed
 // Moore voting algorithm: https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm . 169: Majority element
+// Construct time series(path related) relationship: 198 house robber
 
 
 /* To be solved */ 
@@ -120,3 +123,4 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // 104. Maximum depth of binary tree: BFS method
 // 107. Binary Tree Level Order Traversal II: Recursive && DFS
 // 172. Factorial Tailing zeros
+// 
