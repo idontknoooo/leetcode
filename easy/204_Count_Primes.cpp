@@ -46,11 +46,11 @@ public:
         if (n < 3) return 0;
         bool A[n];
         int count = 1;
-        memset(A, false, sizeof(A));
+        memset(A, true, sizeof(A));
         for(int i=3; i<n; i+=2) {
-            if (!A[i]) {
+            if (A[i]) {
                 count++;
-                for(long long j = (long long)i*i; j<n; j+=2*i) A[j] = true;
+                for(long long j = (long long)i*i; j<n; j+=2*i) A[j] = false;
             }
         }
         return count;

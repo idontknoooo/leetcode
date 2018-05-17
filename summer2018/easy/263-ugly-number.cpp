@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool isUgly(int num) {
+        if(num < 1) return false;
+        while(num > 1){
+            if(!(num%2)){
+                num /= 2;
+            } else if (!(num%3)){
+                num /= 3;
+            } else if (!(num%5)){
+                num /= 5;
+            } else if (num != 1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return true;
+    }
+};
