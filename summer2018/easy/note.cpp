@@ -19,6 +19,16 @@ func(){
   return a && func() || b;
 }
 
+/* For Loop */ 
+for(int i = 0; i < 128; ++i) if(a[i]%2) if(++odd > 1) return false;  // One line for loop
+for(int i = 0; i < 128; ++i) 
+  if(a[i]%2) 
+    if(++odd > 1) 
+      return false;
+// Same as above
+
+
+
 /* Vector */
 return {1,2,3} // vector<int> literal without declare 
 return {}      // Empty literal
@@ -28,6 +38,7 @@ vec['X'] = 1;  // Use character as index
 vec.back() == vec[vec.size()-1]; // Use vec.back
 k %= vec.size() // rotate number cannot more than length of vector
 vec.size()-1    // if vec is empty, result is Not -1, it will be 18446744073709551615, since vec.end()==-1
+vector<int> vec(100, 0); // Initialize vector of size 100 with all 0, somehow faster than array
 
 
 /* Stack */
@@ -141,9 +152,19 @@ min_element(num.begin(), num.end(), val) // Return iterator,
 memset(ptr, value, size); // Fill a block of memory. Sets the first num bytes of the block of memory pointed by ptr to the specified value
 
 
+/* Stream */
+// To separate string inside of a string use "istringstream"
+string str = "ab cd";
+istringstream in(str);
+while(in >> word) cout << word << endl; // will print ab, cd
+
 /* Other */ 
 if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // They are 128 chars in ascii charset: https://en.wikipedia.org/wiki/ASCII#Character_set
+// Sum between 0, a = a(a-1)/2
+// Sum between a, b = (b-a)(a+b-1)/2
+// (a+b)/2 is NOT same as a+(b-a)/2 since the first one might overflow integer to long, second one won't
+
 
 
 /* Methods */
@@ -151,10 +172,17 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // Newton Iterative method: sqrt()
 // Double pointer: Fast & slow pointer in containers like linked list, vector which can be traversed
 // Double pointer2: When 1 path doesn't solve (or hard to solve a problem) add another path and compare two path to solve problem: 243:shortest word distance
+// Double pointer3: Continously replace element in vector: 283-move-zeres
 // Moore voting algorithm: https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm . 169: Majority element
 // Construct time series(path related) relationship: 198 house robber
 // Sieve of Eratosthenes: Best way to find prime numbers. https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes Also, find time complexity of it O(nlgn*lg(lgn))
 // Add digits; 1 + (num-1)%9 for all positive number
+// Most dynamic programming questions need math induction!
+
+
+
+/* Logic */ 
+// Always think about Math: mathematic way is more efficient than computer science way
 
 
 
