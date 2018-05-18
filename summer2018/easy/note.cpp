@@ -117,6 +117,7 @@ Treenode* func()  // When create new TreeNode() need to return cannot be void. 1
 /* Bitwise Operation */
 int a = 4;
 a>>1          // Equal to a/2 = 2; Also, remove the most right bit
+a>>2          // a/2/2 = a/4 = 1
 a<<1          // Equal to a*2 = 8; Also, remove most left bit and add 0 from most right bit
 cout << a>>1; // Illegal (conflict after cout)
 int b = a>>1; // Legal. b will equal to 2
@@ -126,6 +127,16 @@ n &= n-1      // Change 1 bit at a time, make bit with value 1 to 0 one by one. 
 n & 1         // Only keep most right bit and ingore all other bit
 if(a==b) 
 if(!(a^b))    // Faster than above when a and b are integers
+// Binary of power of 4
+/*
+001   - 1
+100   - 4
+10000 - 16
+10^8  - 64
+...
+If x is power of 4, then x&(x-1)==0
+If x is power of 4, then (x-1)%3==0
+*/
 
 
 /* Notice */
@@ -164,6 +175,11 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // Sum between 0, a = a(a-1)/2
 // Sum between a, b = (b-a)(a+b-1)/2
 // (a+b)/2 is NOT same as a+(b-a)/2 since the first one might overflow integer to long, second one won't
+// Find if x is power of 3, if x is an integer, find the max power of 3 that is an integer, say m = 3^max, if m%x==0 and x >0 then, x is power of 3.
+//    3^max / n^num = 3^(max-num) = Integer
+// Perfect square:
+//  n^2 - (n-1)^2 = 2n-1
+//  n^2 = 2n-1 + (n-1)^2
 
 
 
