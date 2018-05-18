@@ -1,15 +1,20 @@
 #include <iostream>
 #include <vector>
+#include <climits>
+#include <set>
 #include <unordered_map>
 //#include <string>
 using namespace std;
 
 int main(){
-  unordered_map<int, int> um;
-  vector<int> vec = {1,2,3,4,5,6};
-  for(int i = 0; i < vec.size(); ++i){
-    int tmp = vec[i]<<1;
-    cout << tmp << endl;
+  vector<int> vec = {1,2,3,4};
+  set<int> s(vec.begin(), vec.end());
+  for(auto it = s.begin(); it != s.end(); ++it){
+    cout << *it << endl;
+  }
+  cout << endl;
+  for(auto it = s.rbegin(); it != s.rend(); ++it){
+    cout << *it << endl;
   }
   return 0;
 }

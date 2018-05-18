@@ -28,6 +28,11 @@ for(int i = 0; i < 128; ++i)
 // Same as above
 
 
+/* Iterator */
+// Don't iterate from end(), because end() is nullptr, if you want to iterate reversely, use rbegin() != rend()
+auto it = set.begin(); 
+it + 3 // this is WRONG, you can only do ++it or --it for iterator
+
 
 /* Vector */
 return {1,2,3} // vector<int> literal without declare 
@@ -39,6 +44,7 @@ vec.back() == vec[vec.size()-1]; // Use vec.back
 k %= vec.size() // rotate number cannot more than length of vector
 vec.size()-1    // if vec is empty, result is Not -1, it will be 18446744073709551615, since vec.end()==-1
 vector<int> vec(100, 0); // Initialize vector of size 100 with all 0, somehow faster than array
+
 
 
 /* Stack */
@@ -57,6 +63,7 @@ q.back();
 q.pop();   // Pop out front
 q.push(x); // Push to back
 // Pop & push in single loop q.size() times will keep queue as the same queue
+// To store a specific amount of numbers in order, you don't have to always use vector since it will cause extra calculation, use queue and pop the number that will never be used. 346-moving-average-from-data-stream
 
 
 /* Unordered Map */
@@ -69,7 +76,14 @@ if(um[kk])                  // Exist, but it will missing when value is 0
 if(!um[kk])                 // NOT "Not Found", since it might because the value is 0
 // For sorted vector, you no need unordered map
 // When knowing the total size of mapping, use vector(array) instead of unordered_map since it might be faster: 242-valid-anagram
-
+// Following are not equal
+int tmp = um.find(s[i])==um.end()? i : -1;
+um[s[i]] = tmp;
+//if(um.find(s[i])==um.end()){
+//    um[s[i]] = i;
+//} else {
+//    um[s[i]] = -1;
+//}
 
 
 
@@ -180,6 +194,8 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // Perfect square:
 //  n^2 - (n-1)^2 = 2n-1
 //  n^2 = 2n-1 + (n-1)^2
+// two's complements for negative number -1
+//  !1 + 1 = !(001) + 1 = 110 + 1 = 111
 
 
 
@@ -211,3 +227,4 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // 234. Palindrome Linked list
 // 256. Paint House
 // 257. Binary Tree Path
+// 371. Integer Sum
