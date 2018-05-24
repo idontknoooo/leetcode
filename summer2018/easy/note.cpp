@@ -93,7 +93,9 @@ if(ss.find('(') != string::npos) // Found (exist in string)
 if(ss.find('(') != -1)           // Same as above 
 string::npos // means "until the end of the string". This constant is defined with a value of -1, which because size_t is an unsigned integral type, it is the largest possible representable value for this type. 
 to_string(8); // Convert int, double .. to string
-
+// Add to back of a string is faster than add to front of a string
+s += " ";     // Fast
+s  = " " + s; // Slow
 
 /* Character */
 int a = '5' - '0' // Same as 5-0. Char arithematics
@@ -166,6 +168,7 @@ NULL    // not null;
 nullptr // same as above
 isalpha() // Check if it's letter
 isdigit() // Check if it's number 
+if('0' <= S[i] && S[i] <= '9') // Same as above
 isalnum() // Check if it's letter or number
 sort(vec.begin(), vec.end());// Sort vector
 static bool myComp(const Interval& it1, const Interval& it2){ return interval1.start < interval2.start; } // Need 'static' when placing it in a class
