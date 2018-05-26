@@ -178,6 +178,8 @@ accumulate(num.begin(), num.end(), 0, bit_xor<int>());
 min_element(num.begin(), num.end(), val) // Return iterator, 
 *min_element() // Return value by de-reference
 memset(ptr, value, size); // Fill a block of memory. Sets the first num bytes of the block of memory pointed by ptr to the specified value
+isupper(x) // same as x < 97 when given input are only letters
+islower(x) // same as x >= 97 when given input are only leters
 
 
 /* Stream */
@@ -189,6 +191,9 @@ while(in >> word) cout << word << endl; // will print ab, cd
 /* Other */ 
 if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // They are 128 chars in ascii charset: https://en.wikipedia.org/wiki/ASCII#Character_set
+// Number ascii code: [48, 57]
+// Capital letter: [65, 90]
+// Lower letter: [97, 122]
 // Sum between 0, a = a(a-1)/2
 // Sum between a, b = (b-a)(a+b-1)/2
 // (a+b)/2 is NOT same as a+(b-a)/2 since the first one might overflow integer to long, second one won't
@@ -199,6 +204,7 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 //  n^2 = 2n-1 + (n-1)^2
 // two's complements for negative number -1
 //  !1 + 1 = !(001) + 1 = 110 + 1 = 111
+// -1 * a is faster than -a, when 'a' is a number
 
 
 
@@ -232,3 +238,7 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // 257. Binary Tree Path
 // 371. Integer Sum
 // 437. Path Sum III
+// Tree Traverse: Inorder, etc.
+// BFS on Tree, DFS on Tree
+// Heap sort
+// Other sort
