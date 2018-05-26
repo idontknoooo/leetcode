@@ -180,6 +180,7 @@ min_element(num.begin(), num.end(), val) // Return iterator,
 memset(ptr, value, size); // Fill a block of memory. Sets the first num bytes of the block of memory pointed by ptr to the specified value
 isupper(x) // same as x < 97 when given input are only letters
 islower(x) // same as x >= 97 when given input are only leters
+reverse(s.begin(), s.end()); // Reverse can be used on string & vector etc using iterator
 
 
 /* Stream */
@@ -205,6 +206,21 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // two's complements for negative number -1
 //  !1 + 1 = !(001) + 1 = 110 + 1 = 111
 // -1 * a is faster than -a, when 'a' is a number
+// You can use private member to replace lack of parameter in function
+/*
+class Test {
+  int hh = 0;
+public:
+  void a(int num){
+    hh += num;
+  }
+  
+  // Same as above
+  void b(int num, int& hh){ 
+    hh += num;
+  }
+};
+*/
 
 
 
@@ -238,7 +254,7 @@ if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
 // 257. Binary Tree Path
 // 371. Integer Sum
 // 437. Path Sum III
-// Tree Traverse: Inorder, etc.
+// Tree Traverse: Inorder, postorder, etc.
 // BFS on Tree, DFS on Tree
 // Heap sort
 // Other sort
