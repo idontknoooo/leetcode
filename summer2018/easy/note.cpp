@@ -115,7 +115,36 @@ Treenode* func()  // When create new TreeNode() need to return cannot be void. 1
 //  mid+1, end   // right subtree
 // Invert tree: Invert from bottom level. Always think base case, that's intuitive for tree.
 // Binary search tree: least common ancestor of a & b always the first node in between of [a, b] traverse from head, moving one extra to left will decrease upper bound which will lose max(a,b) as child, moving one extra to right will increase the lower bound which will lose min(a,b) as child: 235-lowest-common-ancestor
-
+// Pre-order : root->left->right
+/*
+void preorder(TreeNode* root){
+  if(root){
+    cout << root->val << endl;
+    preorder(root->left);
+    preorder(root->right);
+  }
+}
+*/
+// In-order  : left->root->right
+/*
+void inorder(TreeNode* root){
+  if(root){
+    inorder(root->left);
+    cout << root->val << endl;
+    inorder(root->right);
+  }
+}
+*/
+// Post-order: left->right->root
+/*
+void postorder(TreeNode* root){
+  if(root){
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->val << endl;
+  }
+}
+*/
 
 /* Linked List */
 // Double pointer: slow vs fast to detect whether there is a cycle
