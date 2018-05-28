@@ -265,7 +265,13 @@ public:
   }
 };
 */
-
+// Recreate variable takes time
+for(int a = 0; a < 3; ++a)
+  for(int b = a; b < 5; ++b);
+// Faster than above, since didn't recreate b
+int a = 0, b = -1
+for(a = 0; a < 3; ++a)
+  for(b = a; b < 5; ++b);
 
 
 /* Methods */
