@@ -185,6 +185,9 @@ if(!(a^b))    // Faster than above when a and b are integers
 If x is power of 4, then x&(x-1)==0
 If x is power of 4, then (x-1)%3==0
 */
+// How to check all bits are 1s
+int a = 7; // 111
+return !(a & a+1); // 111 & 1000 -> 0; !0 -> 1
 
 
 /* Notice */
@@ -285,6 +288,7 @@ for(a = 0; a < 3; ++a)
 // Sieve of Eratosthenes: Best way to find prime numbers. https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes Also, find time complexity of it O(nlgn*lg(lgn))
 // Add digits; 1 + (num-1)%9 for all positive number
 // Most dynamic programming questions need math induction!
+// Displace错位: When traverse array, and situation are symmtrical on left & right, displace to either left or right to simplify situation. 665-non-decreasing-array.cpp
 
 
 
