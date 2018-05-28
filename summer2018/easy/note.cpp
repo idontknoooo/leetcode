@@ -94,8 +94,10 @@ if(ss.find('(') != -1)           // Same as above
 string::npos // means "until the end of the string". This constant is defined with a value of -1, which because size_t is an unsigned integral type, it is the largest possible representable value for this type. 
 to_string(8); // Convert int, double .. to string
 // Add to back of a string is faster than add to front of a string
+s.append(" ") // same as below
 s += " ";     // Fast
 s  = " " + s; // Slow
+
 
 /* Character */
 int a = '5' - '0' // Same as 5-0. Char arithematics
@@ -210,6 +212,18 @@ memset(ptr, value, size); // Fill a block of memory. Sets the first num bytes of
 isupper(x) // same as x < 97 when given input are only letters
 islower(x) // same as x >= 97 when given input are only leters
 reverse(s.begin(), s.end()); // Reverse can be used on string & vector etc using iterator
+
+/* Bitset */
+bitset<10> bs; // Bitset of size 10
+// Set start from left most bit
+bs.set();      // Set all bits as 1
+bs.set(1);     // Set second bit as 1
+bs.set(1,1);   // Set second bit as 1
+bs.set(1,0);   // Set second bit as 0
+bs.test(1);    // Check whether position 1 has value 1
+bitset<10> bs (std::string("1011"));
+bs.reset(0)    // Reset set bit to 0, start from right most bit
+bs.count()     // return the number of set bits (value==1)
 
 
 /* Stream */
