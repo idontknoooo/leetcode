@@ -147,6 +147,7 @@ void postorder(TreeNode* root){
   }
 }
 */
+// When need access multiple nodes on same level, you can use vector to store level and corresponding value and pre-order traverse: 637-average-level-binary-tree
 
 /* Linked List */
 // Double pointer: slow vs fast to detect whether there is a cycle
