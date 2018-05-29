@@ -85,6 +85,22 @@ um[s[i]] = tmp;
 //    um[s[i]] = -1;
 //}
 
+/* Unordered_multimap */
+// 734-sentence-similarity
+unordered_multimap<string, string> umm;
+umm.insert(pair<string, string> ("A", "X"); // there is no [] for multimap, insert a pair, pair->first is key, pair->second is value
+pair <unordered_multimap<string,string>::iterator, unordered_multimap<string,string>::iterator> er = umm.equal_range("A"); // return a range of values which has key "A"
+// er.first: lower bound of equal_range, er.second: upper bound of equal_range
+for(unordered_multimap<string, string>::iterator it = er.first; it != er.second; ++it){
+  cout << it.second << endl; // print all values for key "A"
+}
+
+
+/* Pairs */
+pair<string, string> p = pair<string, string> ("A", "X");
+auto p1 = pair<string, string> (p.second, p.first); // switch first & second and make a new pair
+p = make_pair("B", "Y"); // use make_pair
+
 
 
 /* string */
@@ -210,6 +226,7 @@ static bool myComp(const Interval& it1, const Interval& it2){ return interval1.s
 sort(vec.begin(), vec.end(), myComp); // Make comparitor for non-premitive type in class
 // Below can replace a 1 line for loop of a vector
 accumulate(num.begin(), num.end(), 0, bit_xor<int>());
+// for loop is faster than accumulate!!!
 min_element(num.begin(), num.end(), val) // Return iterator, 
 *min_element() // Return value by de-reference
 memset(ptr, value, size); // Fill a block of memory. Sets the first num bytes of the block of memory pointed by ptr to the specified value
