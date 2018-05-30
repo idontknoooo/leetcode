@@ -325,6 +325,9 @@ for(a = 0; a < 3; ++a)
 // 257. Binary Tree Path
 // 371. Integer Sum
 // 437. Path Sum III
+// 746. Min cost climbing stairs (Dynamic Programming)
+// 758. Bold words in string
+// 784. Letter Case Permutation
 // Tree Traverse: Inorder, postorder, etc.
 // BFS on Tree, DFS on Tree
 // Heap sort
