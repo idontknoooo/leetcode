@@ -84,6 +84,11 @@ um[s[i]] = tmp;
 //} else {
 //    um[s[i]] = -1;
 //}
+// Return max value
+string val = (*max_element(um.begin(), um.end(), [](auto p1, auto p2){return p1.second < p2.second;})).second;
+// Return max key
+string val = (*max_element(um.begin(), um.end(), [](auto p1, auto p2){return p1.second < p2.second;})).first;
+
 
 /* Unordered_multimap */
 // 734-sentence-similarity
@@ -113,6 +118,12 @@ to_string(8); // Convert int, double .. to string
 s.append(" ") // same as below
 s += " ";     // Fast
 s  = " " + s; // Slow
+// Check whether string has all same letter
+a = "bbbbbb";
+if(a.find_first_not_of(a[0]) == string::npos) 
+  cout << "All same" << endl;
+else
+  cout << "Not all same" << endl;
 
 
 /* Character */
@@ -233,6 +244,13 @@ memset(ptr, value, size); // Fill a block of memory. Sets the first num bytes of
 isupper(x) // same as x < 97 when given input are only letters
 islower(x) // same as x >= 97 when given input are only leters
 reverse(s.begin(), s.end()); // Reverse can be used on string & vector etc using iterator
+size_t // Unsigned integral type
+string::size_type sc; // alias of size_t
+stoi(str_dec, &sz);   // to decimal
+stoi(str_hex, nullptr, 16); // to hex
+stoi(str_auto, nullptr, 0); // auto
+
+
 
 /* Bitset */
 bitset<10> bs; // Bitset of size 10
@@ -252,6 +270,7 @@ bs.count()     // return the number of set bits (value==1)
 string str = "ab cd";
 istringstream in(str);
 while(in >> word) cout << word << endl; // will print ab, cd
+while(getline(in, word, ' ')) cout << word << endl; // also works
 
 /* Other */ 
 if() --a, ++b, cout << a; // 3 statement in one line (no need bracket)
@@ -292,7 +311,11 @@ for(int a = 0; a < 3; ++a)
 int a = 0, b = -1
 for(a = 0; a < 3; ++a)
   for(b = a; b < 5; ++b);
-
+// 'a' <= => 'A' toggle lower & upper
+'a' ^= (1 << 5) // 'a' ^= 0b100000 // ->32 
+'a' // 65 1000001
+'A' // 97 1100001 
+'A' - 'a' // 100000
 
 /* Methods */
 // Binary search: search sorted
