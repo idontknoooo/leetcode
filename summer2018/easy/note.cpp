@@ -1,7 +1,7 @@
 /* Array */
 // If knowing size and not changing, then use array with memset
 int arr[n];
-memset(n, 0, sizeof(A));
+memset(arr, 0, n); // Initialize arr with size n and all value 0
 
 
 /* if statement */
@@ -35,10 +35,11 @@ it + 3 // this is WRONG, you can only do ++it or --it for iterator
 
 
 /* Vector */
-return {1,2,3} // vector<int> literal without declare 
+return {1,2,3} // vector<int> literal without declare. Only when return type is vector<int>, complier will automatically realize the type
+vector<int> vec = {1,2,3};
 return {}      // Empty literal
 vector<int> vec;
-vec['X'] = 1;  // Use character as index
+vec['X'] = 1;  // Use character as index, use ascii
 // Some questions, you can intialize the size first then add value and add from end to begin: 118-pascals-triangle
 vec.back() == vec[vec.size()-1]; // Use vec.back
 k %= vec.size() // rotate number cannot more than length of vector
@@ -69,7 +70,7 @@ q.push(x); // Push to back
 /* Unordered Map */
 unordered_map<int, int> um = {
   {1,2}, {2,0}
-} // Use ',' to initialize not ':'
+}; // Use ',' to initialize not ':'
 if(um.find(kk) != um.end()) // Found (exist in map)
 um[kk] // Return 0 if doesn't exist, BUT if the value is 0, then there is a misleading singal
 if(um[kk])                  // Exist, but it will missing when value is 0
@@ -93,7 +94,7 @@ string val = (*max_element(um.begin(), um.end(), [](auto p1, auto p2){return p1.
 /* Unordered_multimap */
 // 734-sentence-similarity
 unordered_multimap<string, string> umm;
-umm.insert(pair<string, string> ("A", "X"); // there is no [] for multimap, insert a pair, pair->first is key, pair->second is value
+umm.insert(pair<string, string> ("A", "X")); // there is no [] for multimap, insert a pair, pair->first is key, pair->second is value
 pair <unordered_multimap<string,string>::iterator, unordered_multimap<string,string>::iterator> er = umm.equal_range("A"); // return a range of values which has key "A"
 // er.first: lower bound of equal_range, er.second: upper bound of equal_range
 for(unordered_multimap<string, string>::iterator it = er.first; it != er.second; ++it){
@@ -120,16 +121,20 @@ s += " ";     // Fast
 s  = " " + s; // Slow
 // Check whether string has all same letter
 a = "bbbbbb";
-if(a.find_first_not_of(a[0]) == string::npos) 
+if(!a.size() && a.find_first_not_of(a[0]) == string::npos) 
   cout << "All same" << endl;
 else
-  cout << "Not all same" << endl;
+  cout << "Not all same or empty" << endl;
 
 
 /* Character */
 int a = '5' - '0' // Same as 5-0. Char arithematics
 'A' + 1           // return 66, since 'A' is 65
 (char)('A' + 1)   // return B , type casting
+'a'               // 97
+'z'               // 122
+'A'               // 65
+'Z'               // 90
 
 
 /* Tree */
