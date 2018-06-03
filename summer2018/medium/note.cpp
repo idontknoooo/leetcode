@@ -35,6 +35,7 @@ for(int i = 0; i < 128; ++i)
     if(++odd > 1) 
       return false;
 // Same as above
+// Remember do while loop can help you force run at least once
 
 
 /* Iterator */
@@ -249,6 +250,8 @@ return !(a & a+1); // 111 & 1000 -> 0; !0 -> 1
 'a' // 65 1000001
 'A' // 97 1100001 
 'A' - 'a' // 100000
+// 29. Devide 2 integers
+a |= pow(2,n); // count division
 
 /* Notice */
 // 1. Reference vs Pointer vs Value
@@ -282,6 +285,7 @@ string::size_type sc; // alias of size_t
 stoi(str_dec, &sz);   // to decimal
 stoi(str_hex, nullptr, 16); // to hex
 stoi(str_auto, nullptr, 0); // auto
+labs(8) // abs() for long number
 
 
 
@@ -395,6 +399,6 @@ for(a = 0; a < 3; ++a)
     Can be solved by brute force and can be improved by using Mathematics.
   Medium questions:
     have more edge cases to handle.
-    Usually not solved by brute force.
+    Usually not solved by brute forcei.
     Sort becomes cheap since questions need more than O(nlgn) computing time
 */
