@@ -139,6 +139,8 @@ else
 s.substr(i, s.length() - i);
 
 
+
+
 /* Character */
 int a = '5' - '0' // Same as 5-0. Char arithematics
 'A' + 1           // return 66, since 'A' is 65
@@ -147,6 +149,12 @@ int a = '5' - '0' // Same as 5-0. Char arithematics
 'z'               // 122
 'A'               // 65
 'Z'               // 90
+// Char to string
+char a = 'c';
+string s = string(1, a); // fill string with 1 'c'
+// Repeat print same chars
+string(2, a) // Fill string with 2 a, where a is a char
+
 
 
 /* Tree */
@@ -383,6 +391,10 @@ for(a = 0; a < 3; ++a)
 
 /* Thoughts */
 /*
-  Easy questions can be solved by brute force and can be improved by using Mathematics.
-  Medium questions have more edge cases to handle.
+  Easy questions:
+    Can be solved by brute force and can be improved by using Mathematics.
+  Medium questions:
+    have more edge cases to handle.
+    Usually not solved by brute force.
+    Sort becomes cheap since questions need more than O(nlgn) computing time
 */
