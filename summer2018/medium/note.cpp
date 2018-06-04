@@ -252,6 +252,9 @@ return !(a & a+1); // 111 & 1000 -> 0; !0 -> 1
 'A' - 'a' // 100000
 // 29. Devide 2 integers
 a |= pow(2,n); // count division
+// odd
+if(odd  & 1 == 1); // if odd
+if(even & 1 == 0); // If even
 
 /* Notice */
 // 1. Reference vs Pointer vs Value
@@ -286,6 +289,9 @@ stoi(str_dec, &sz);   // to decimal
 stoi(str_hex, nullptr, 16); // to hex
 stoi(str_auto, nullptr, 0); // auto
 labs(8) // abs() for long number
+// iota
+vector<int> vec(3);
+iota(vec.begin(), vec.end(), 10); // vec -> [10, 11, 12]
 
 
 
@@ -360,8 +366,17 @@ for(a = 0; a < 3; ++a)
 // Sieve of Eratosthenes: Best way to find prime numbers. https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes Also, find time complexity of it O(nlgn*lg(lgn))
 // Add digits; 1 + (num-1)%9 for all positive number
 // Most dynamic programming questions need math induction!
+/* Dynamic programming 4 factors:
+    1. Status (current position)
+    2. Initialization
+    3. Current calculation algo
+    4. result
+*/
 // Displace错位: When traverse array, and situation are symmtrical on left & right, displace to either left or right to simplify situation. 665-non-decreasing-array.cpp
 // Extract:  When you have lots of if statements to handle each specific case, try to extract the common thing and place it in front, for all if statements. This can reduce the number of if statements. 2-add-two-numbers
+// Back Tracing: 39-combination-sum.cpp
+// Prime key: Prime number and their products can be used as unique keys 49-group-anagrams
+// Divide and conquer: 50-pow-x-n
 
 
 

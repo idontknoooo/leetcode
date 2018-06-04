@@ -30,11 +30,11 @@ public:
         
         int used[9][9] = {0}, used1[9][9] = {0}, used2[9][9] = {0};
       
-         for(int i = 0; i < board.size(); i++) {
-             for(int j = 0; j < board[i].size(); j++) {
+         for(int i = 0; i < board.size(); i++) {   // row
+             for(int j = 0; j < board[i].size(); j++) { // column
                  if(board[i][j] != '.') {
                      int num = board[i][j]-'0'-1;
-                     int k = i/3*3 + j/3;
+                     int k = i/3*3 + j/3; // box; same box have same k value
                      
                      if(used[i][num] || used1[j][num] || used2[k][num])
                          return false;

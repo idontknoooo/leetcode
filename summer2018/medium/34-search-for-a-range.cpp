@@ -1,25 +1,21 @@
+// 13ms
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
         int start = 0, end = nums.size() - 1;
-        while (start <= end)
-        {
+        while (start <= end) {
             int mid = (start + end) >> 1;
-            if (nums[start] != target || nums[end] != target)
-            {
-                if (nums[start] != target && nums[end] != target)
-                {
+            if (nums[start] != target || nums[end] != target) {
+                if (nums[start] != target && nums[end] != target) {
                     if (nums[mid] > target) end = mid - 1;
                     else if (nums[mid] < target) start = mid + 1;
                     else { ++start; --end; }
                 }
-                else if (nums[start] != target)
-                {
+                else if (nums[start] != target) {
                     if (nums[mid] == target) ++start;
                     else start = mid + 1;
                 }
-                else
-                {
+                else {
                     if (nums[mid] == target) --end;
                     else end = mid - 1;
                 }
