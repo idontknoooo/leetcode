@@ -4,6 +4,7 @@ long a = 1;
 if(a < (unsigned long)(INT_MAX)+1)
 // Or 
 if(a - INT_MAX - 1 < 0) // This will convert to long
+// When function return type is 'int' and you returned a double, it will automatically floor() it to a integer
 
 
 
@@ -357,7 +358,40 @@ for(a = 0; a < 3; ++a)
 
 /* Methods */
 // Binary search: search sorted
-// Newton Iterative method: sqrt()
+//  template of binary search
+int mySqrt(int x) {
+  int left = 0, right = x, mid = left + (right - left) / 2;
+  while(left + 1 < right) {
+    if(mid == x / mid) return mid;
+    if(mid  < x / mid) left = mid;
+    else right = mid;
+    mid = left + (right - left) / 2;
+  }
+  if(right == x / right) return right;
+  else return left;
+}
+// Newton Iterative method: sqrt(), f(x) = x^2 - a, where a is the number we want to find out the sqrt() for
+int mySqrt(int x) {
+  double ans = x / 2.0;
+  while(abs(pow(ans, 2) - x) > 0.000001) {
+      // X_n+1 = X_n - f(X_n) / f'(X_n);
+      // f(X_n) = X_n * X_n - x = ans * ans - x;
+      // f'(X_n) = 2 * X_n = 2 * ans;
+      ans = ans - (ans*ans - x) / (2.0*ans);
+  }
+  return floor(ans); // will automatically convert to int(floor)
+}
+// Pascal triangle formula
+class Solution {
+public:
+    vector<int> getRow(int k) {
+        vector<int> ans(k+1,1);
+        for(int i=1;i<=k/2;++i){          
+           ans[k-i]= ans[i]=long(ans[i-1])*(k-i+1)/i;           
+        }        
+        return ans;
+    }
+};
 // Double pointer: Fast & slow pointer in containers like linked list, vector which can be traversed
 // Double pointer2: When 1 path doesn't solve (or hard to solve a problem) add another path and compare two path to solve problem: 243:shortest word distance
 // Double pointer3: Continously replace element in vector: 283-move-zeres
