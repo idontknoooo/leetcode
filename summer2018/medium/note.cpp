@@ -256,6 +256,7 @@ a |= pow(2,n); // count division
 // odd
 if(odd  & 1 == 1); // if odd
 if(even & 1 == 0); // If even
+// Left shift give 1 position for new bit in summation, just like integer * 10 which leave a new space 190-reverse-bits.cpp
 
 /* Notice */
 // 1. Reference vs Pointer vs Value
