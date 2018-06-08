@@ -18,7 +18,23 @@ public:
         return res;      
     }
 };
+// same as above
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        unordered_map<int, int> um;
+        for(int num1 : nums1) {
+            um[num1]++;
+        }
+        vector<int> ans;
+        for(int num2 : nums2) {
+            if(um[num2]-- > 0) ans.push_back(num2);
+        }
+        return ans;
+    }
+};
 
+// sort with std
 class Solution {
 public:
     vector<int> intersect(vector<int>& v1, vector<int>& v2) {

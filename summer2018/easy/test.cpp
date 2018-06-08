@@ -12,5 +12,10 @@ int main(){
   cout << bs << endl;
   cout << bs.set() << endl;
   cout << bs.reset(0) << endl;
+  cout << endl;
+  unsigned int a = -100 & 15, b = -100 % 16;
+  cout << a << endl;
+  cout << b << endl;
+  cout << 16-84 % 16 << endl;
   return 0;
 }

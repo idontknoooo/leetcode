@@ -257,6 +257,14 @@ a |= pow(2,n); // count division
 if(odd  & 1 == 1); // if odd
 if(even & 1 == 0); // If even
 // Left shift give 1 position for new bit in summation, just like integer * 10 which leave a new space 190-reverse-bits.cpp
+// Mod
+x % 16 // x % n == x & (n-1); for x > 0
+x & 15 // same as above, but it also handle negative number
+// positive to negative 2 complements
+a = 4 
+b = ~a + 1  // -4
+a == ~(b-1)
+
 
 /* Notice */
 // 1. Reference vs Pointer vs Value
