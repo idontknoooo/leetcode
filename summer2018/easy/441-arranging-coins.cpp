@@ -15,6 +15,7 @@ public:
 class Solution {
 public:
     // k(k+1)/2 = n
+    // k = (1+sqrt(8*n)/2) - 0.5
     int arrangeCoins(int n) {
         return floor(sqrt(8*static_cast<double>(n) + 1)/2.0 - 0.5);
     }
