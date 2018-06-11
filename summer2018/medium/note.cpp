@@ -423,6 +423,7 @@ public:
 
 
 
+
 /* Logic */ 
 // Always think about Math: mathematic way is more efficient than computer science way
 
