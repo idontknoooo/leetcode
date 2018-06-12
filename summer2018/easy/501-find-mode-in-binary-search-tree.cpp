@@ -125,3 +125,42 @@ public:
         helper(root->right,res,pre,cnt,gmax);
     }
 };
+
+// O(1) space
+class Solution
+{
+public:
+  std::vector<int> findMode(TreeNode *root)
+  {
+    std::vector<int> res;
+    int preVal = 0, count = 1, maxCount = 0;
+    inorder(root, preVal, count, maxCount, res);
+    return res;
+  }
+
+private:
+  void inorder(TreeNode *root, int& preVal, int& count, int& maxCount, std::vector<int>& modes)
+  {
+    if (root != NULL)
+    {
+      inorder(root->left, preVal, count, maxCount, modes);
+      if (!modes.empty())
+      {
+        if (root->val != preVal)
+          count = 1;
+        else
+          ++count;
+      }
+      if (maxCount <= count)
+      {
+        if (maxCount < count)
+          modes.clear();
+        modes.push_back(root->val);
+        maxCount = count;
+      }
+      preVal = root->val;
+      inorder(root->right, preVal, count, maxCount, modes);
+    }
+  }
+};
+

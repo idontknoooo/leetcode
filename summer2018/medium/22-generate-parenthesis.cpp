@@ -12,9 +12,9 @@ public:
             return; 
         }
         if(left > 0)
-            add(ret, s + "(",left-1, right);
+            add(ret, s + "(",left-1, right); // add (
         if(right > left)
-            add(ret, s + ")", left, right-1);
+            add(ret, s + ")", left, right-1); // add ) when there is a (
     }
 };
 

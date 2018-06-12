@@ -1,8 +1,8 @@
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& findNums, vector<int>& nums) {
-        stack<int> s;
-        unordered_map<int, int> m;
+        stack<int> s; // unresolved value
+        unordered_map<int, int> m; // next greater
         // Store next greater for each value in 'nums'
         // If exist, add to map
         // otherwise, ignore (no such a key)
