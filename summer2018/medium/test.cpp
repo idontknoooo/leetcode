@@ -30,6 +30,13 @@ public:
 };
 
 int main() {
-    Solution s;
-    cout << s.longestPalindrome("aaabbccbbfg") << endl;
+    //Solution s;
+    //cout << s.longestPalindrome("aaabbccbbfg") << endl;
+    cout << 0 << " " << ~0 << endl;
+    int a = 1;
+    while(a) {
+      int tmp = a & 1;
+      cout << tmp << endl;
+      a <<= 1;
+    }
 }

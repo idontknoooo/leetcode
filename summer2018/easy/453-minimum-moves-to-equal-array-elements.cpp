@@ -1,3 +1,4 @@
+// My solution 75ms
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
@@ -12,7 +13,7 @@ public:
     }
 };
 
-
+// 49ms
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
