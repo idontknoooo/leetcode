@@ -1,3 +1,4 @@
+// 14ms
 class Solution {
 public:
     vector<string> findRelativeRanks(vector<int>& nums) {
@@ -20,3 +21,41 @@ public:
     }
 };
 
+// no sort, faster 12ms
+class Solution {
+public:
+    string rankString(int rank) {
+        if (rank == 1) return "Gold Medal";
+        if (rank == 2) return "Silver Medal";
+        if (rank == 3) return "Bronze Medal";
+        return to_string(rank);
+    }
+    
+    vector<string> findRelativeRanks(vector<int>& nums) {
+        if (nums.size() == 0) return vector<string>();
+        
+        // Get max number for array size
+        int m = nums[0];
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > m) m = nums[i];
+        }
+        
+        vector<int> index(m + 1, -1);
+        // Number to index, make an index array corresponding to number array
+        for (int i = 0; i < nums.size(); i++) {
+            index[nums[i]] = i;
+        }
+        
+        vector<string> rank(nums.size());
+        int current_rank = 1;
+        // Assign increamented rank on index array
+        for (int j = index.size() - 1; j >= 0; --j) {
+            if (index[j] >= 0) {
+                rank[index[j]] = rankString(current_rank);
+                current_rank++;
+            }
+        }
+        
+        return rank;
+    }
+};

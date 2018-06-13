@@ -13,7 +13,7 @@ public:
     }
 };
 
-// 49ms
+// 49ms, save sorting time 
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
