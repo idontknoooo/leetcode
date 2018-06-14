@@ -14,7 +14,7 @@ public:
             return;
         }
         else {
-            for(int i = order;i<num.size();i++) {// iterative component
+            for(int i = order; i<num.size(); i++) {// iterative component
                 if(num[i]>target) return;
                 if(i&&num[i]==num[i-1]&&i>order) continue; // check duplicate combination
                 local.push_back(num[i]),

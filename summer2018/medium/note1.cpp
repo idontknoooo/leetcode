@@ -28,6 +28,7 @@ Negative number position marker
 /*
 Inorder traverse
 501-find-mode-in-Binary-search-tree.cpp
+530-minimum-absolute-difference-in-BST.cpp
 */
 
 /*
@@ -66,3 +67,6 @@ Math: Sum(i - min) = Sum - n*min
 
 /* Map */
 m.count(1); // return 1 if key exist otherwise 0
+
+/* Standard Library */
+min(s.begin()+i, s.end()); // return smallest iterator

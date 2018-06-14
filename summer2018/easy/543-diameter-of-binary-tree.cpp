@@ -41,9 +41,9 @@ public:
         
         int leftDepth = getMaxDepth(root->left);
         int rightDepth = getMaxDepth(root->right);
-        
+        // assign diameter, but return depth
         maxDepth = (leftDepth + rightDepth > maxDepth ) ? leftDepth + rightDepth : maxDepth;
-        
+        // Return depth
         return max(leftDepth +1, rightDepth+1);
         
     }
