@@ -6,7 +6,7 @@ public:
       permuteRecursive(num, 0, result);
       return result;
     }
-  void permuteRecursive(vector<int> &num, int begin, vector<vector<int> > &result)  {
+    void permuteRecursive(vector<int> &num, int begin, vector<vector<int> > &result)  {
       if (begin==num.size()-1) {
           result.push_back(num);
           return;

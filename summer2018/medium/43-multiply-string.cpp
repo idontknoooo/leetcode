@@ -107,12 +107,13 @@ public:
                 sum[i+j+1] = tmp%10 + '0';
                 carry = tmp/10;
             }
-            sum[i] += carry;
+            sum[i] += carry; // If carry after the end of sum[i]
         }
-        
         size_t startpos = sum.find_first_not_of("0");
-        if(string::npos != startpos)
-            return sum.substr(startpos);
-        return "0";
+        return startpos==-1? "0" : sum.substr(startpos);
+        //size_t startpos = sum.find_first_not_of("0");
+        //if(string::npos != startpos)
+        //    return sum.substr(startpos);
+        //return "0";
     }
 };

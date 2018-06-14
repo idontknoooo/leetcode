@@ -1,31 +1,26 @@
+// binary search | serilized vector
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         
-        if (!matrix.size())
-            return false;
-        
-        if (!matrix[0].size())
+        if (!matrix.size() || !matrix[0].size())
             return false;
         
         int m = matrix[0].size();
-        
-        
         int l = 0;
         int r = m * matrix.size() - 1;
         
-        while (l < r) {
+        while (l + 1 < r) {
             int mid = (l + r)/2;
-            
             if (matrix[mid/m][mid % m] < target) {
-                l = mid + 1;
+                l = mid;
             } else {
                 r = mid;
             }
 
         }
-        
-        return matrix[r/m][r % m] == target;
+        if(matrix[r/m][r%m] == target || matrix[l/m][l%m] == target) return true;
+        else return false;
     }
 };
 
@@ -61,5 +56,35 @@ public:
             else break;
         }
         return false;
+    }
+};
+
+// my solution 13ms beat 78% | 2 binary search
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        if(!matrix.size() || !matrix[0].size()) return false;
+        int low = 0, high = matrix.size(), mid = low + (high-low)/2;
+        while(low + 1 < high) {
+            mid = low + (high-low)/2;
+            if(target == matrix[mid][0]) return true;
+            else if(target < matrix[mid][0]) high = mid;
+            else low = mid;
+        }
+        int row = 0;
+        if(high < matrix.size() && matrix[high][0] < target) row = high;
+        else {
+            if(matrix[low][0] > target) return false;
+            else row = low;
+        }
+        int left = 0, right = matrix[0].size();
+        while(left + 1 < right) {
+            mid = left + (right-left)/2;
+            if(target == matrix[row][mid]) return true;
+            else if(target < matrix[row][mid]) right = mid;
+            else left = mid;
+        }
+        if(matrix[row][left] == target || matrix[row][right] == target) return true;
+        else return false;
     }
 };

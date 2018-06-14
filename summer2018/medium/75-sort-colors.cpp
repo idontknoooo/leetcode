@@ -23,7 +23,7 @@ public:
             if(!nums[i])
                 swap(nums[i], nums[zero_index++]);
             else if(nums[i]==2)
-                swap(nums[i--], nums[two_index--]);
+                swap(nums[i--], nums[two_index--]); // stop 1 round since value from 'two_index' hasn't been read yet
         }
         return;
     }
