@@ -51,3 +51,32 @@ public:
         return result;
     }
 };
+
+// my solution 10ms short code. 9ms beat 99%
+/* Output 122'
+1    pos = 0, 
+12   pos = 1, i = 1
+122' pos = 2, i = 2
+(12' pos = 1, i = 2 // will not happen)
+2    pos = 0, i = 1
+22'  pos = 1, i = 1
+*/
+class Solution {
+public:
+    vector<vector<int> > ans;
+    void helper(vector<int>& tmp, vector<int>& nums, int pos) {
+        ans.push_back(tmp);
+        for(int i = pos; i < nums.size(); ++i) {
+            if(i > pos && nums[i] == nums[i-1]) continue;
+            tmp.push_back(nums[i]);
+            helper(tmp, nums, i+1);
+            tmp.pop_back();
+        }
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<int> tmp;
+        sort(nums.begin(), nums.end());
+        helper(tmp, nums, 0);
+        return ans;
+    }
+};

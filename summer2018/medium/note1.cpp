@@ -103,6 +103,8 @@ If pass by value, not necessary to swap back i and pos, since all posible value 
 If pass by reference, may cause repeat
 */
 
+/* Other */
+// Reference is much faster than pass by value, since you save time on copying stuff.
 
 
 

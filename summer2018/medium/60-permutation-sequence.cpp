@@ -27,13 +27,16 @@ public:
         string num = "123456789";
         vector<int> factorial(n, 1);
         for (int i = 1; i < n; i++) factorial[i] = factorial[i - 1] * i;
+        for(int i = 0; i < n; ++i) cout << factorial[i] << endl;
         k--; // if k = 1, 0 / factorial[i - 1] = 0
         for (int i = n; i >= 1; i--){
-            int j = k / factorial[i - 1];
-            k %= factorial[i - 1];
-            res.push_back(num[j]);
-            num.erase(j, 1);
+            int j = k / factorial[i - 1]; // position of number
+            //cout << j << " " << k << " " << factorial[i-1] << endl;
+            k %= factorial[i - 1]; // alter position
+            res.push_back(num[j]); // add digit
+            num.erase(j, 1);       // remove digit from string
         }
         return res;
     }
 };
+
