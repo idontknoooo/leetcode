@@ -1,4 +1,11 @@
 // 4ms
+/*
+DP
+Init: [0]->1, [1]->1
+State: 到当前位置的可能性
+Func: [i-1] + [i-2] 前两个位置可能性的和。因为位置i可能是独立也可能要和前一位结合。如果是独立的话，可能性就是前一位的可能性，如果要和前一位结合的话，可能性就是前2位的可能性。
+Result: 最后一位的可能性
+*/
 class Solution {
 public:
    int numDecodings(string s) {
@@ -6,8 +13,7 @@ public:
         int dp1 = 1;
         int dp2 = '0' == s[0] ? 0 : 1;
         int res = dp2;
-        for (int i = 1; i < s.size(); i++)
-        {
+        for (int i = 1; i < s.size(); i++) {
             res = ('0' == s[i]) ? 0 : dp2;
             res = ('1' == s[i-1] || ('2' == s[i-1] && s[i] < '7')) ? res+dp1 : res;
             dp1 = dp2;

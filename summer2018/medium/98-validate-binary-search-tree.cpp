@@ -1,3 +1,39 @@
+// 10ms inorder traverse
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        if(!root) return true;
+        TreeNode* pLast = NULL;
+        stack<TreeNode*> stk;
+        while(root || stk.size()) {
+            if(root) {
+                stk.push(root);
+                root = root->left;
+            } else {
+                root = stk.top();
+                stk.pop();
+                // inorder: pLast must less than root
+                // pLast is left when root is parent
+                // pLast is parent when root is right
+                if(!pLast) pLast = root;
+                else if(pLast->val>=root->val) return false;
+                pLast = root;
+                root  = root->right;
+            }
+        }
+        return true;
+    }
+};
+
 // my slow 15ms solution
 /**
  * Definition for a binary tree node.
@@ -31,38 +67,3 @@ public:
     }
 };
 
-
-// 10ms
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
-class Solution {
-public:
-    bool isValidBST(TreeNode* root) {
-        if(root==NULL)
-            return true;
-        TreeNode* pLast=NULL;
-        stack<TreeNode*> stk;
-        while(root!=NULL || !stk.empty()) {
-            while(root!=NULL) {
-                stk.push(root);
-                root=root->left;
-            }
-            root=stk.top();
-            stk.pop();
-            if(pLast==NULL)
-                pLast=root;
-            else if(pLast->val>=root->val)
-                return false;
-            pLast=root;
-            root=root->right;
-        }
-        return true;
-    }
-};

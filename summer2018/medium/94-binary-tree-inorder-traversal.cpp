@@ -73,3 +73,40 @@ public:
         return result;
     }
 };
+
+
+// use stack
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> sol;
+        stack<TreeNode*> q;
+        TreeNode* current = root;
+        int done=0;
+        while(!done) {
+            if(current!=NULL) {
+                q.push(current);
+                current = current->left;
+            }
+            else{
+                if(!q.empty()){
+                  current = q.top();
+                  sol.push_back(current->val);
+                  q.pop();
+                  current = current->right;
+                }
+                else done = 1;
+            }
+        }
+        return sol;
+    }
+};

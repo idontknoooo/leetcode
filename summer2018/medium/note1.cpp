@@ -33,6 +33,12 @@ Inorder traverse
 501-find-mode-in-Binary-search-tree.cpp
 530-minimum-absolute-difference-in-BST.cpp
 */
+/*
+Depth First Search (DFS)
+79-word-search.cpp
+94-binary-tree-inorder-traverse.cpp | stack
+*/
+
 
 /*
 Relative rank for consecutive number
@@ -70,6 +76,7 @@ Math: Sum(i - min) = Sum - n*min
 
 /* Map */
 m.count(1); // return 1 if key exist otherwise 0
+// Map will be automatically sort by key. I tried to rank using lambda function, but I didn't succed even if the code is correct.
 
 /* Standard Library */
 min(s.begin()+i, s.end()); // return smallest iterator
@@ -105,6 +112,7 @@ If pass by reference, may cause repeat
 
 /* Other */
 // Reference is much faster than pass by value, since you save time on copying stuff.
+// Remind about input size, range are important, they can help you decide what data structure to use to solve problem.
 
 
 
