@@ -1,0 +1,39 @@
+###################################
+Quick select (Quick sort variation)
+  lintcode 461 - leetcode 215 
+  lintcode 5
+  https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E9%80%89%E6%8B%A9
+  https://zh.wikipedia.org/wiki/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95
+  https://zh.wikipedia.org/wiki/Bogo%E6%8E%92%E5%BA%8F
+同向双指针
+  lintcode 406 - leetcode 209
+  lintcode 384 - leetcode 3
+  lintcode 382
+  lintcode 32
+逆向双指针
+  lintcode 609
+heap:
+  lintcode 401 - leetcode 378
+  lintcode 465
+  lintcode 543 
+OrderedDict
+  lintcode 386 - leetcode 340  
+
+###################################
+Trie
+  lintcode 473
+  lintcode 442
+  lintcode 629
+  lintcode 132
+Union Find
+  lintcode 1070
+  lintcode 591 
+  lintcode 590
+  lintcode 589
+  lintcode 178
+  lintcode 434
+Prim's algorithm - minimum spanning tree
+dijkstra algorithm - https://zh.wikipedia.org/wiki/%E6%88%B4%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95
+difference - https://stackoverflow.com/questions/13794948/what-is-the-difference-between-dijkstra-and-prims-algorithm
+amazon - https://www.cnblogs.com/zcy-backend/p/6734304.html
+sorting object in python - https://docs.python.org/3/howto/sorting.html
